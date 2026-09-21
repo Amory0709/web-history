@@ -8,7 +8,7 @@
 - Include named inventors or properly credited teams and primary/authoritative source links for every chapter. Distinguish proposals, implementations and standardization dates.
 - Preserve a continuous scroll-story, with clickable timeline navigation. Respect reduced motion and keep all content usable without WebGL.
 - Demonstrations must clearly identify simulations; never invent benchmark numbers or attribute collaborative standards to a single inventor.
-- The user requested creating a GitHub repository and uploading the website and source. Website deployment has not been requested.
+- The user requested creating a GitHub repository and uploading the website and source. The user explicitly requested GitHub Pages deployment.
 
 Run the local server yourself and open the preview in the browser available to this environment. Do not give the user server-start instructions when you can run it.
 
@@ -22,3 +22,5 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 
 - Narrative iteration: the first six technical chapters share one teaching page and session-local state. Preserve its title, style, reading list, likes and draft between stages; identify simulations. Every stage poses a next question. `npm run build` must regenerate the standalone HTML automatically.
 - Include interactive URL anatomy in the HTML chapter: scheme, hostname/host, port, path, query, fragment, and HTTP(S) origin, with authoritative sources.
+
+- GitHub Pages publishes the freshly built standalone HTML at `https://amory0709.github.io/web-history/` on pushes to main. Keep the deployment workflow and README current.

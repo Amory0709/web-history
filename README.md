@@ -1,5 +1,7 @@
 # The Web — A Living History
 
+**[Open the live experience](https://amory0709.github.io/web-history/)**
+
 A scroll-driven, interactive history of the Web: **13 chapters, 19 milestones, 12 hands-on demonstrations, and 32 authoritative references**. Follow the ideas and people who turned linked documents into an application platform.
 
 The experience is written in English and uses SLB Sans, a white-and-cobalt editorial layout, floating-document artwork, and a clickable chronological timeline.
@@ -41,7 +43,7 @@ npm run test:sites
 npm run preview
 ```
 
-The build creates the static client in `dist/client/` and the included Sites-compatible worker in `dist/server/`. No hosted website or GitHub Pages deployment is configured by this repository.
+The build creates the static client in `dist/client/` and the included Sites-compatible worker in `dist/server/`. GitHub Pages automatically publishes the latest successful build from `main` at https://amory0709.github.io/web-history/. The workflow `.github/workflows/pages.yml` builds and tests the source, then publishes the self-contained HTML as `index.html`. Embedded assets make the deployment independent of the repository subpath. Updates appear after the Actions deployment finishes, not while files are still being edited.
 
 ## Chapters
 
