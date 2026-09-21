@@ -13,6 +13,9 @@ export function PaperScene({motion}){
    const departureLine=Math.min(innerHeight*.55,rect.top+scrollY-80);
    const travel=Math.max(350,rect.height*.95);
    const progress=motion?Math.max(0,Math.min(1,(departureLine-rect.top)/travel)):0;
+   // Lift the entire stacking context: a canvas z-index cannot escape the
+   // hero-art layer beneath the chapter copy and the following glass panel.
+   host.current.dataset.paperFlight=String(progress>0&&progress<1);
    // Hold the scene against scrolling so forward depth is perceptible.
    // The host stays in normal flow and determines reversible progress.
    const carry=innerWidth<=900?.45:1;

@@ -1,4 +1,7 @@
 .hero-art.paper-scene{position:relative;aspect-ratio:1/1;width:105%;margin-left:-5%;max-height:640px;transform:none!important;pointer-events:none;overflow:visible;isolation:isolate}
+/* Rest behind the copy; approaching sheets pass above content (layers 1–2).
+   Fixed navigation stays above the flight, and the canvas never catches input. */
+.hero-art.paper-scene[data-paper-flight=true]{z-index:3}
 .paper-scene>canvas{position:absolute;inset:-60% -45%;width:190%;height:220%;display:block;opacity:0}
 .paper-scene-ready>canvas{opacity:1}
 .hero>.cern-story{position:relative;z-index:1}
