@@ -8,7 +8,8 @@ The experience is written in English and uses SLB Sans, a white-and-cobalt edito
 
 ## Experience
 
-- Scroll through the story or jump between chapters using the vertical timeline on the left.
+- Scroll through the story or jump using the frameless vertical timeline on the left. Positions follow a linear 1989–2023 calendar scale: a seven-year gap is seven times a one-year gap. Date ranges anchor at their first year; the current caption shows the full range.
+- Move through 12 reversible, scroll-driven transitions: passing years, drifting technical notation, large background typography, and layered entrances. Wheel and touch scrolling remain native.
 - Explore the CERN diagram: keep the same computers and files in place, add cross-system hyperlinks, and follow a connection.
 - Open **People** for 19 contributor profiles and photograph-search links; names in the narrative also link to their profiles.
 - Open **Timeline** to see when technologies were proposed, implemented, or standardized.
@@ -17,7 +18,7 @@ The experience is written in English and uses SLB Sans, a white-and-cobalt edito
 - Open **Read the address** in the HTML chapter to explore scheme, hostname, port, path, query, fragment, and origin. Edit the example or compare default ports; parsing stays local.
 - Smooth a noisy signal using a real WebAssembly addition module. Compare serial and grouped work in the parallel-compute illustration, then optionally run and verify a 64-value WebGPU calculation.
 - Read a continuous, content-height narrative with frosted navigation and panels, no page counters, and no scroll snapping.
-- Pause ambient motion using the header control. The layout adapts to smaller screens and respects reduced-motion preferences.
+- Pause motion using the header control. The layout adapts to smaller screens and respects reduced-motion preferences.
 
 ## Run locally
 
@@ -79,7 +80,10 @@ Dates represent different kinds of milestone; the site explains proposal, implem
 | `src/ComputeLabs.jsx` | Signal smoothing with real Wasm and illustrative/real parallel computation |
 | `src/CernNetwork.jsx` | Fixed-node tree-to-network interaction |
 | `src/People.jsx` | Contributor links and profile/photograph directory |
-| `src/editorial.css` | Continuous layout, left timeline, glass surfaces and mobile adaptation |
+| `src/editorial.css` | Continuous layout, glass surfaces and mobile adaptation |
+| `src/Chronology.jsx` | Linear calendar scale and frameless left navigation |
+| `src/ScrollStory.jsx` | Twelve scroll-driven transitions and chapter entrances |
+| `src/motion.css` | Chronology, motion, responsive and reduced-motion styles |
 | `src/App.jsx` | Chapters, scroll navigation and source/detail dialogs |
 | `src/styles.css` | Typography, layout, responsive rules and motion |
 | `public/assets/` | Floating-document artwork |
@@ -105,4 +109,4 @@ Historical references are attached to each chapter, including the W3C archives a
 
 ## Validation
 
-The production build and four existing worker/packaging tests pass. Browser checks cover live HTML editing, CSS themes, JavaScript counters, session simulation, persistent DOM edits, AJAX input preservation, Wasm output, unavailable-GPU handling, navigation, dialogs, and reference links. The revised desktop layout and 390px/768px responsive frame views were inspected. New checks cover CERN cross-system navigation, 32-point Wasm smoothing, 64 illustrated tasks, contributor dialogs and left-rail navigation. The GPU success path requires compatible hardware and was not available in the validation browser. See `design-qa.md` for the review notes.
+The production build and four existing worker/packaging tests pass. Browser checks cover live HTML editing, CSS themes, JavaScript counters, session simulation, persistent DOM edits, AJAX input preservation, Wasm output, unavailable-GPU handling, navigation, dialogs, and reference links. The revised desktop layout and 390px/768px responsive frame views were inspected. New checks cover CERN cross-system navigation, 32-point Wasm smoothing, 64 illustrated tasks, contributor dialogs and left-rail navigation. The GPU success path requires compatible hardware and was not available in the validation browser. The September 2026 motion revision also checks proportional year spacing, reverse scrolling, motion-off styles, and 390px/768px layouts. See `design-qa.md` for the review notes.

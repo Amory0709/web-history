@@ -1,4 +1,34 @@
-# Design QA — Continuous Web revision
+# Design QA — Calendar and scroll motion revision
+
+final result: passed
+
+Reviewed 21 September 2026. The user's latest direction supersedes the earlier framed rail: an unboxed Star Atlas-inspired chronology, true calendar spacing, and flowing transitions inspired by pear.no. The selected white/cobalt artwork and SLB typography remain the visual foundation.
+
+## Visual review
+
+- `design-motion.jpg`: 1363 × 936 desktop browser capture of the CSS transition and chapter. The left rail has no background, border, blur, rounded container or shadow. Fine annual ticks and cobalt current-year emphasis provide orientation.
+- `design-motion-responsive.jpg`: browser frames at 390 × 844 and 768 × 844 CSS pixels. Dense years remain distinct; mobile shows compact year labels with the full current range below. The content is readable in one column.
+- The saved Star Atlas reference was inspected. Its live experience requires WebGL in this browser; pear.no failed WebGL initialization. The result follows the requested visual/motion direction, not a verified frame-for-frame recreation.
+- Twelve interludes join thirteen chapters. Years pass in opposite vertical directions, technical notation and oversized names drift at different rates, and the following text and experiment enter with different offsets. All motion follows scroll position and reverses when scrolling upward.
+- Removed a heading clipping effect after inspecting the mobile transition: titles remain readable when scrolling stops midway. Existing glass header, experimental panels and dialogs are retained.
+
+## Verification
+
+- Browser geometry gives 19.06px for 1994→1995 and 133.42px for 1998→2005, a 7:1 ratio within subpixel rounding. Marker positions use `(year - 1989) / 34` throughout; there are no chapter-spacing corrections. Ranges anchor at their first year, with complete dates in accessible names, tooltips and the current caption.
+- Computed rail styling: transparent background, 0px border, no box shadow. Desktop document width 1348px in a 1363px viewport: no horizontal overflow.
+- Scroll readback: first transition progress rose from 0.2916 to its later position, then returned to 0.4898 after upward scrolling. All 12 passages are present.
+- Manual pause produces `transform: none` on copy and years and removes reveal clipping. CSS also provides OS reduced-motion fallbacks, with static decorative typography and lines.
+- Left navigation reaches the correct hash and active year. Changing the shared HTML title to “A connected history” carries into the CSS chapter.
+- Production build passes; all four existing worker/packaging checks pass. The standalone HTML is regenerated from current source.
+- Inspected console errors were browser-extension metadata messages, not application errors.
+
+## Limits
+
+Narrow layouts were checked in browser frames, not physical touch devices. Browser-native wheel gestures occasionally timed out in the automation transport after scrolling had completed; settled viewport and DOM readbacks were used for verification. No GPU support is required for the new animation.
+
+---
+
+# Previous review — Continuous Web revision
 
 final result: passed
 

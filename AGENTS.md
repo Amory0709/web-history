@@ -30,3 +30,6 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - Design revision: natural content-height scrolling, never one-screen-per-chapter or slide counters. A fixed vertical timeline belongs on the LEFT, including a compact mobile rail; no bottom timeline. Use restrained frosted-glass navigation, panels and dialogs. Every named contributor needs a profile link and access to photograph resources.
 - Extend the opening with a stable-node CERN tree-to-network interactive diagram, and connect later demos with explicit problems, discoveries and onward questions.
 - Typography: normal, tight letter spacing for year/section labels (e.g. “1989 · The proposal”). Avoid widely tracked all-caps labels throughout the experience.
+
+- Timeline revision: use an unboxed, transparent Star Atlas-inspired vertical chronology. Marker positions must be linear in actual year, not equal chapter spacing; range chapters anchor to their first year and retain full date labels in accessible names and the current caption.
+- Use reversible, scroll-driven transitions between EVERY historical section: layered year typography, technical tokens and differential text/demo movement. Retain natural wheel/touch scrolling, readable content and reduced-motion/manual-pause fallback. No snapping or full-screen chapter pinning.
