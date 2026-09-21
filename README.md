@@ -2,18 +2,21 @@
 
 **[Open the live experience](https://amory0709.github.io/web-history/)**
 
-A scroll-driven, interactive history of the Web: **13 chapters, 19 milestones, 12 hands-on demonstrations, and 32 authoritative references**. Follow the ideas and people who turned linked documents into an application platform.
+A scroll-driven, interactive history of the Web: **13 chapters, 19 milestones, hands-on demonstrations, and 32 authoritative references**. Follow the ideas and people who turned linked documents into an application platform.
 
 The experience is written in English and uses SLB Sans, a white-and-cobalt editorial layout, floating-document artwork, and a clickable chronological timeline.
 
 ## Experience
 
-- Scroll through the story or jump between chapters using the bottom timeline.
+- Scroll through the story or jump between chapters using the vertical timeline on the left.
+- Explore the CERN diagram: keep the same computers and files in place, add cross-system hyperlinks, and follow a connection.
+- Open **People** for 19 contributor profiles and photograph-search links; names in the narrative also link to their profiles.
 - Open **Timeline** to see when technologies were proposed, implemented, or standardized.
 - Open **Sources** or **The story & sources** for historical context, contributor credits, and original references.
 - Follow one page through HTML, CGI/cookies, CSS, JavaScript, DOM and AJAX. Your title, chosen style, reading list, likes and unfinished draft carry forward during your visit. Each stage ends with the next question to solve.
 - Open **Read the address** in the HTML chapter to explore scheme, hostname, port, path, query, fragment, and origin. Edit the example or compare default ports; parsing stays local.
-- Try a real WebAssembly module and explore the later platform breakthroughs.
+- Smooth a noisy signal using a real WebAssembly addition module. Compare serial and grouped work in the parallel-compute illustration, then optionally run and verify a 64-value WebGPU calculation.
+- Read a continuous, content-height narrative with frosted navigation and panels, no page counters, and no scroll snapping.
 - Pause ambient motion using the header control. The layout adapts to smaller screens and respects reduced-motion preferences.
 
 ## Run locally
@@ -73,6 +76,10 @@ Dates represent different kinds of milestone; the site explains proposal, implem
 | `src/UrlAnatomy.jsx` | Interactive URL anatomy and origin explorer |
 | `src/Journey.jsx` | Shared teaching page, state and six connected chapters |
 | `src/Demos.jsx` | Later platform demonstrations |
+| `src/ComputeLabs.jsx` | Signal smoothing with real Wasm and illustrative/real parallel computation |
+| `src/CernNetwork.jsx` | Fixed-node tree-to-network interaction |
+| `src/People.jsx` | Contributor links and profile/photograph directory |
+| `src/editorial.css` | Continuous layout, left timeline, glass surfaces and mobile adaptation |
 | `src/App.jsx` | Chapters, scroll navigation and source/detail dialogs |
 | `src/styles.css` | Typography, layout, responsive rules and motion |
 | `public/assets/` | Floating-document artwork |
@@ -86,7 +93,7 @@ Built with React, Vite, plain CSS, browser APIs, and Phosphor icons. To extend t
 
 HTML, CSS, JavaScript, DOM editing, responsive media queries, and the 41-byte WebAssembly module run in the browser. Audio uses the Web Audio API only after a button press.
 
-Cookies, AJAX request timing, asynchronous I/O, messaging, and offline caching are explicitly labelled local simulations. They do not create accounts, make payments, run a messaging server, or change your network connection. The graphics surface is a Canvas 2D projection so it also works without WebGL. The optional WebGPU calculation uses a real compute shader when browser, hardware, and context support it; otherwise it reports that no GPU computation occurred. The illustrations are not performance benchmarks.
+Cookies, AJAX request timing, asynchronous I/O, messaging, and offline caching are explicitly labelled local simulations. They do not create accounts, make payments, run a messaging server, or change your network connection. The graphics surface is a Canvas 2D projection so it also works without WebGL. The signal filter uses the Wasm module for window sums and JavaScript for looping, division and rendering. The separate 64-cell work-scheduling grid is an intentionally slowed illustration. The optional WebGPU calculation uses a real compute shader when browser, hardware, and context support it; otherwise it reports that no GPU computation occurred. The illustrations are not performance benchmarks.
 
 ## Sources and assets
 
@@ -98,4 +105,4 @@ Historical references are attached to each chapter, including the W3C archives a
 
 ## Validation
 
-The production build and four existing worker/packaging tests pass. Browser checks cover live HTML editing, CSS themes, JavaScript counters, session simulation, persistent DOM edits, AJAX input preservation, Wasm output, unavailable-GPU handling, navigation, dialogs, and reference links. Desktop and 500px layouts were inspected. The GPU success path requires compatible hardware and was not available in the validation browser. See `design-qa.md` for the review notes.
+The production build and four existing worker/packaging tests pass. Browser checks cover live HTML editing, CSS themes, JavaScript counters, session simulation, persistent DOM edits, AJAX input preservation, Wasm output, unavailable-GPU handling, navigation, dialogs, and reference links. The revised desktop layout and 390px/768px responsive frame views were inspected. New checks cover CERN cross-system navigation, 32-point Wasm smoothing, 64 illustrated tasks, contributor dialogs and left-rail navigation. The GPU success path requires compatible hardware and was not available in the validation browser. See `design-qa.md` for the review notes.

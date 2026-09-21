@@ -26,3 +26,7 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - GitHub Pages publishes the freshly built standalone HTML at `https://amory0709.github.io/web-history/` on pushes to main. Keep the deployment workflow and README current.
 
 - Treat this as a continuous website, not a slide deck: no page numbers or numbered chapter counters. Preserve meaningful historical years and named timeline navigation.
+
+- Design revision: natural content-height scrolling, never one-screen-per-chapter or slide counters. A fixed vertical timeline belongs on the LEFT, including a compact mobile rail; no bottom timeline. Use restrained frosted-glass navigation, panels and dialogs. Every named contributor needs a profile link and access to photograph resources.
+- Extend the opening with a stable-node CERN tree-to-network interactive diagram, and connect later demos with explicit problems, discoveries and onward questions.
+- Typography: normal, tight letter spacing for year/section labels (e.g. “1989 · The proposal”). Avoid widely tracked all-caps labels throughout the experience.
