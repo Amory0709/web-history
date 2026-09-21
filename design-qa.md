@@ -180,3 +180,22 @@ Full-size hero, modal, interaction and responsive screenshots were inspected. Da
 
 - Replaced the wrapped mobile timeline with a two-column, three-row capability list. Removed its single detached connector and kept every marker inline with its label. The current capability has a pale blue background; completed and upcoming items retain distinct marker states. Desktop remains a single horizontal sequence.
 - Verified 360px and 430px phone previews: all six labels fit, the two columns align, and document width does not overflow. Existing aria-current semantics and shared page state are unchanged. Production build and whitespace checks pass.
+
+## Whole-site mobile refinement — 22 September 2026
+
+Scope: the 14 chapter demos, technology introductions, opening/CERN section and timeline, people and URL dialogs. Captured the current UI before editing at 390px and 360px in Chromium frames. This is a responsive layout/interaction check, not physical iOS Safari or screen-reader certification.
+
+| Step | Surface | Findings and outcome |
+| --- | --- | --- |
+| 1 | HTML, server state, CSS | Six capabilities remain in the corrected two-column grid; readable, no additional demo clipping found. |
+| 2 | JavaScript, DOM, AJAX | Shared page and controls fit; increased touch heights and editable text size for phones. |
+| 3 | Runtime, responsive layout, frameworks | Runtime fits. Responsive example now opens at 320 CSS px on phones and has room for all three content blocks. Framework cards stack vertically instead of squeezing two columns; saving still updates shared state. |
+| 4 | Graphics, offline/PWA, Wasm | Graphics and offline controls fit. Wasm now uses vertical calculation steps and a readable caption outside the scaled SVG. Actual Wasm execution returned 578 / 5 = 115.6 in the selected sample. |
+| 5 | WebGPU, CERN, opening | Opening and CERN remain usable at narrow widths. Timing records now use full-width rows; illustrated parallel run completed 64 tasks and displayed its measured time. The graph remains a dense illustration on phones. |
+| 6 | Technology introductions | CSS, JavaScript and AJAX browser cards were pushed half off-screen by an important auto margin. Centered using their actual 310px width; all small-screen scenes now fit their available column, with extra room for framework pieces. |
+| 7 | Timeline, people, URL dialogs | Existing dialog layouts fit and closing works. Close controls are 44px and URL input text is 16px. |
+| 8 | Narrow controls and reflow | Verified the main demo controls stay inside the 360px viewport. Framework save, responsive range to 640px, Wasm execution and the 64-task illustration work after reflow. |
+
+Evidence captured in this audit: mobile-audit-01-foundations.jpg through mobile-audit-08-narrow-interactions.jpg; accepted after views include mobile-audit-after-introductions.jpg, mobile-audit-after-applications.jpg, mobile-audit-after-wasm.jpg and mobile-audit-09-timing-rows.jpg. A transient blank screenshot taken while the preview reloaded was rejected.
+
+Implementation is primarily scoped to `src/mobile.css`; desktop layouts retain their existing presentation. No timing benchmark or GPU availability claim is inferred from the illustration. Production build and whitespace checks pass.

@@ -127,3 +127,5 @@ Search/share output includes a descriptive title and summary, canonical URL, `ro
 After deployment, verify the `https://web-history.onrender.com/` URL-prefix property in Google Search Console, submit `https://web-history.onrender.com/sitemap.xml`, and inspect the homepage. Ownership verification and indexing requests require the owner's account; these have not been submitted automatically. These changes improve crawlability and link previews, but do not guarantee indexing, rankings or traffic.
 
 Chapter introductions use a longer scroll reveal, more vertical space and a gentle scroll carry so the completed illustration remains readable before the body takes over. Animation begins only when the artwork is visible and remains reversible; reduced motion shows the completed scene without carry.
+
+On phones, teaching demos reflow for the narrow reading column: framework components and Wasm steps stack vertically, run timings use full-width rows, and the responsive example opens at 320 CSS pixels. Chapter illustrations scale to available space while their scroll timing stays reversible.
