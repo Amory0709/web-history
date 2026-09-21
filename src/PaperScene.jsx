@@ -13,10 +13,13 @@ export function PaperScene({motion}){
    const departureLine=Math.min(innerHeight*.55,rect.top+scrollY-80);
    const travel=Math.max(350,rect.height*.95);
    const progress=motion?Math.max(0,Math.min(1,(departureLine-rect.top)/travel)):0;
-   // Follow the scroll briefly so the descending sheets do not appear to fly up
-   // with the document. The host stays in normal flow and determines progress.
-   canvas.current.style.transform=`translateY(${(progress*travel*1.1).toFixed(2)}px)`;
-   scene.render(progress);host.current.dataset.paperProgress=progress.toFixed(3);
+   // Hold the scene against scrolling so forward depth is perceptible.
+   // The host stays in normal flow and determines reversible progress.
+   const carry=innerWidth<=900?.45:1;
+   canvas.current.style.transform=`translateY(${(progress*travel*carry).toFixed(2)}px)`;
+   const handoff=innerWidth<=900?Math.max(0,Math.min(1,(progress-.22)/.45)):0;
+   canvas.current.style.opacity=String(1-handoff*handoff*(3-2*handoff));
+   scene.render(progress,rect.height);host.current.dataset.paperProgress=progress.toFixed(3);
   }
   function schedule(){if(!frame&&!disposed)frame=requestAnimationFrame(draw)}
   const resize=new ResizeObserver(schedule);resize.observe(host.current);
@@ -24,7 +27,7 @@ export function PaperScene({motion}){
   window.addEventListener('scroll',schedule,{passive:true});window.addEventListener('resize',schedule);schedule();
   return()=>{disposed=true;cancelAnimationFrame(frame);resize.disconnect();intersection.disconnect();window.removeEventListener('scroll',schedule);window.removeEventListener('resize',schedule);scene.dispose()};
  },[motion]);
- return <div ref={host} className={'hero-art paper-scene '+(ready?'paper-scene-ready':'')} role="img" aria-label="Three complete paper documents, gently curved in space. As you scroll, their links fade and the sheets flutter downward and out to the sides.">
+ return <div ref={host} className={'hero-art paper-scene '+(ready?'paper-scene-ready':'')} role="img" aria-label="Three complete paper documents, gently curved in space. As you scroll, their links fade and the sheets fly toward you, growing larger and drifting outward before fading into the next part of the story.">
   {!ready&&<img className="paper-scene-fallback" src="/assets/connected-documents.png" alt=""/>}
   <canvas ref={canvas} aria-hidden="true"/>
  </div>;

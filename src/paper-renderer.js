@@ -35,15 +35,16 @@ function point(pose,u,v){
  const p=rotate([x,y,z],rotation);return p.map((a,i)=>a+center[i]);
 }
 const sheets=[
- {kind:'left',w:1.19,h:1.88,center:[-1.65,.96,-.52],rotation:[-.07,.35,-.13],bend:.3,twist:.08,sway:.19,delay:0,drift:[-1.05,-1.45,-.3],turn:[.2,-.32,.34],phase:0},
- {kind:'main',w:2.36,h:3.34,center:[.02,-.15,.3],rotation:[-.09,-.34,.08],bend:.48,twist:-.08,sway:-.48,delay:.08,drift:[.16,-1.8,-.4],turn:[.28,.24,-.2],phase:1.4},
- {kind:'right',w:1.23,h:1.96,center:[1.65,-.91,-.3],rotation:[-.04,-.3,.025],bend:.38,twist:.07,sway:-.29,delay:.16,drift:[.95,-1.6,-.25],turn:[.22,-.3,-.34],phase:2.8}
+ {kind:'left',w:1.19,h:1.88,center:[-1.65,.96,-.52],rotation:[-.07,.35,-.13],bend:.3,twist:.08,sway:.19,delay:.08,drift:[-.38,-.12,4.9],turn:[.13,-.24,.17],phase:0},
+ {kind:'main',w:2.36,h:3.34,center:[.02,-.15,.3],rotation:[-.09,-.34,.08],bend:.48,twist:-.08,sway:-.48,delay:0,drift:[.1,-.16,5.5],turn:[.16,.36,-.12],phase:1.4},
+ {kind:'right',w:1.23,h:1.96,center:[1.65,-.91,-.3],rotation:[-.04,-.3,.025],bend:.38,twist:.07,sway:-.29,delay:.16,drift:[.36,-.14,5.1],turn:[-.12,.21,-.19],phase:2.8}
 ];
 function poseFor(sheet,progress){
  const p=ease((progress-sheet.delay)/(1-sheet.delay));const flex=Math.sin(p*Math.PI);
- // Broad, offset sways suggest air resistance; all motion is reversible with scroll.
+ // Positive depth moves toward the viewer. Perspective enlarges the whole mesh;
+ // small offset sways keep the approach gentle and reversible with scroll.
  const flutter=Math.sin(p*Math.PI*2+sheet.phase)*flex;
- return {...sheet,progress:p,opacity:1-ease((p-.5)/.44),center:sheet.center.map((a,i)=>a+sheet.drift[i]*p+(i===0?flutter*.14:0)),rotation:sheet.rotation.map((a,i)=>a+sheet.turn[i]*p+flutter*(i===2?.14:.08)),bend:sheet.bend+flex*.36,twist:sheet.twist+flutter*.24,sway:sheet.sway+flutter*.12};
+ return {...sheet,progress:p,opacity:1-ease((p-.48)/.48),center:sheet.center.map((a,i)=>a+sheet.drift[i]*p+(i===0?flutter*.09:0)),rotation:sheet.rotation.map((a,i)=>a+sheet.turn[i]*p+flutter*(i===2?.08:.06)),bend:sheet.bend+flex*.3,twist:sheet.twist+flutter*.2,sway:sheet.sway+flutter*.1};
 }
 // Project the same curved geometry with Canvas 2D. This also works when a browser
 // disables WebGL. Rendering happens only on scroll/resize, not on an idle loop.
@@ -52,12 +53,13 @@ export function createPaperScene(canvas){
  const textures=sheets.map(s=>texturePage(s.kind));
  let lastFrame='';
  const shadow=document.createElement('canvas');shadow.width=256;shadow.height=320;const shadowInk=shadow.getContext('2d');shadowInk.translate(128,160);shadowInk.scale(1,1.25);const haze=shadowInk.createRadialGradient(0,0,15,0,0,116);haze.addColorStop(0,'#34435e');haze.addColorStop(.45,'#34435ea0');haze.addColorStop(1,'#34435e00');shadowInk.fillStyle=haze;shadowInk.fillRect(-128,-128,256,256);
- function render(progress){
+ function render(progress,sceneHeight){
   const rect=canvas.getBoundingClientRect(),dpr=Math.min(devicePixelRatio||1,2),w=rect.width,h=rect.height;
-  const key=`${w}:${h}:${dpr}:${progress.toFixed(4)}`;if(key===lastFrame)return;lastFrame=key;
+  const key=`${w}:${h}:${sceneHeight}:${dpr}:${progress.toFixed(4)}`;if(key===lastFrame)return;lastFrame=key;
   if(canvas.width!==Math.round(w*dpr)||canvas.height!==Math.round(h*dpr)){canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr)}
   ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,w,h);
-  const focal=h/(2*Math.tan(38*Math.PI/360)),project=([x,y,z])=>[w/2+x*focal/(9.7-z),h/2-y*focal/(9.7-z)];
+  // Keep the original framing while overscan gives approaching sheets room.
+  const focal=sceneHeight*1.48/(2*Math.tan(38*Math.PI/360)),project=([x,y,z])=>[w/2+x*focal/(9.7-z),h/2-y*focal/(9.7-z)];
   const poses=sheets.map(s=>poseFor(s,progress));
   function outline(p){const points=[];for(let i=0;i<=20;i++)points.push(project(point(p,i/20,0)));for(let i=1;i<=20;i++)points.push(project(point(p,1,i/20)));for(let i=19;i>=0;i--)points.push(project(point(p,i/20,1)));for(let i=19;i>0;i--)points.push(project(point(p,0,i/20)));ctx.beginPath();points.forEach((v,i)=>i?ctx.lineTo(...v):ctx.moveTo(...v));ctx.closePath()}
   for(const p of poses){ctx.save();ctx.globalAlpha=.075*p.opacity*(1-p.progress*.7);const pos=project([p.center[0]+.1,p.center[1]-.2,-.7]),width=p.w*focal/10.4*1.5,height=p.h*focal/10.4*1.4;ctx.translate(...pos);ctx.rotate(-p.rotation[2]);ctx.drawImage(shadow,-width/2,-height/2,width,height);ctx.restore()}
