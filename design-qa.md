@@ -157,3 +157,9 @@ Full-size hero, modal, interaction and responsive screenshots were inspected. Da
 - Corrected the HTML introduction’s connector stacking: both transformed glass cards use layer 0; the connecting SVG and its destination dot use layer 1 inside a local stacking context. Verified the complete blue curve and endpoint remain in front of the destination card. Navigation retains its existing foreground layer.
 - Checked the desktop opening at rest and mid-scroll, plus 390px and 768px responsive frames with no horizontal overflow (375/375 and 753/753 content/client widths). On narrow screens, reduced scroll carry and an earlier whole-scene fade preserve the following text; the CERN section explicitly stays above the paper artwork.
 - Reduced motion keeps progress, translation and handoff fade at zero. The animation remains scroll-driven and reversible. Production build and the four existing deployment checks passed; regenerated the standalone export after final responsive adjustments.
+
+## Start transitions when their artwork is visible
+
+- Changed all 13 chapter introductions to derive progress from the illustration center within the usable viewport below the fixed header. Titles and whitespace entering the viewport no longer start the illustration. Initial CSS progress is zero instead of 0.4; reduced motion still shows the completed composition.
+- Verified desktop HTML at an artwork top of 833.7px in a 936px viewport: progress 0; at 383.7px: progress 0.3699. Scrolling backward restored the start state. Checked the same entry and in-view positions in 390px and 768px frames; progress stays zero on arrival and advances once the illustration is in view.
+- Production build passes and the standalone export is regenerated. Existing paper-flight and connector-layer fixes remain included.

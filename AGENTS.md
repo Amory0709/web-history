@@ -56,3 +56,5 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - Include one combined framework chapter about organizing growing applications through components and state, with AngularJS/Angular, React and Vue as examples. Anchor it to the 2012–14 release milestones, distinguish AngularJS from Angular 2 (2016), credit creators and teams, and explain that React is a UI library. Keep it a short interactive part of the continuous story, not a brand ranking.
 
 - In the HTML introduction, the blue connecting path and destination dot must render in front of BOTH glass document cards. Keep the link scene stacking context local so it never covers fixed navigation.
+
+- Transition scenes must stay at their initial state until their actual illustration enters the visible reading area below the header. Derive progress from the illustration bounds, not the earlier chapter/prologue boundary. Keep progress reversible and responsive, with an immediate completed state for reduced motion.
