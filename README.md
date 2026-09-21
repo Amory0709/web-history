@@ -1,6 +1,6 @@
 # The Web — A Living History
 
-**[Open the live experience](https://amory0709.github.io/web-history/)**
+**[Open the live experience](https://web-history.onrender.com/)** · [GitHub Pages mirror](https://amory0709.github.io/web-history/)
 
 A scroll-driven, interactive history of the Web: **13 chapters, 20 milestones, hands-on demonstrations, and 35 authoritative references**. Follow the ideas and people who turned linked documents into an application platform.
 
@@ -9,8 +9,8 @@ The experience is written in English and uses SLB Sans, a white-and-cobalt edito
 ## Experience
 
 - Scroll through the story or jump using the frameless vertical timeline on the left. Positions follow a linear 1989–2023 calendar scale: a seven-year gap is seven times a one-year gap. Date ranges anchor at their first year; the current caption shows the full range.
-- Move through 12 interactive transitions whose visuals introduce the next capability: linked documents, request/response, CSS styling, a JavaScript counter, a DOM tree, partial AJAX updates, an I/O queue, responsive reflow, a spatial canvas, an installable/offline app, Wasm and GPU work. Scroll or use each miniature’s control. Wheel and touch scrolling remain native.
-- Watch the three opening papers fly away independently as you scroll, and return when you scroll back.
+- Move through 12 large interactive introductions integrated into their chapters. The chapter body gradually emerges as the introduction recedes, without a dividing rule or repeated transition years. Their visuals introduce the next capability: linked documents, request/response, CSS styling, a JavaScript counter, a DOM tree, partial AJAX updates, an I/O queue, responsive reflow, a spatial canvas, an installable/offline app, Wasm and GPU work. Scroll or use each miniature’s control. Wheel and touch scrolling remain native.
+- Watch three complete, curved paper surfaces lift and drift apart as you scroll, and return when you scroll back. Their typography, paper grain, blue links and proportions echo the original artwork; the sheets and soft shadows are rendered separately without cutting up the illustration. The renderer is idle between scroll/resize updates and works without WebGL.
 - Explore the CERN diagram: keep the same computers and files in place, weave a spiderweb of document links, and follow a cross-system connection. A small minimalist spider appears beside the web; faint silk is a visual metaphor, not additional infrastructure.
 - Open **People** for 21 contributor profiles and 16 verified portraits, with dates and source/credit links. Earlier photographs are preferred where available; Nicola Pellow, Ian Fette, David M. Kristol and the newly added PWA contributors Frances Berriman and Alex Russell retain explicit missing-portrait placeholders. Names in the narrative also link to their profiles.
 - Open **Timeline** to see when technologies were proposed, implemented, or standardized.
@@ -114,3 +114,13 @@ Historical references are attached to each chapter, including the W3C archives a
 ## Validation
 
 The production build and four existing worker/packaging tests pass. Browser checks cover live HTML editing, CSS themes, JavaScript counters, session simulation, persistent DOM edits, AJAX input preservation, Wasm output, unavailable-GPU handling, navigation, dialogs, and reference links. The revised desktop layout and 390px/768px responsive frame views were inspected. New checks cover CERN cross-system navigation, 32-point Wasm smoothing, 64 illustrated tasks, contributor dialogs and left-rail navigation. The GPU success path requires compatible hardware and was not available in the validation browser. The September 2026 motion revision also checks proportional year spacing, reverse scrolling, motion-off styles, and 390px/768px layouts. See `design-qa.md` for the review notes.
+
+## Render and search discovery
+
+The primary address is **https://web-history.onrender.com/**, hosted as a Render **Static Site**. Use `npm run build` with the publish directory `dist/client`. GitHub Pages remains a mirror. Both builds declare the Render URL as canonical.
+
+The build generates a readable initial HTML narrative from the same chapter data used by React. Visitors without JavaScript can read all 13 chapters and the authoritative source links; JavaScript enhances it into the animated experience. This is not crawler-specific content.
+
+Search/share output includes a descriptive title and summary, canonical URL, `robots.txt`, a one-URL `sitemap.xml`, WebSite/WebPage JSON-LD, and Open Graph/Twitter metadata pointing to the 1200 × 630 `social-card.jpg`. The sitemap lists the actual homepage, not section fragments as pretend pages.
+
+After deployment, verify the `https://web-history.onrender.com/` URL-prefix property in Google Search Console, submit `https://web-history.onrender.com/sitemap.xml`, and inspect the homepage. Ownership verification and indexing requests require the owner's account; these have not been submitted automatically. These changes improve crawlability and link previews, but do not guarantee indexing, rankings or traffic.

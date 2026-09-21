@@ -47,3 +47,7 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - The three opening paper planes fly apart independently with scrolling and return when scrolling reverses.
 - Replace generic oversized-word transitions with technology-specific interactive scenes; each should teach the next capability while the user scrolls.
 - The 2015 chapter includes service workers AND Progressive Web Apps, with the naming credited to Frances Berriman and Alex Russell. Explain manifests, deliberate caching, installation and their separate responsibilities. PWA is an application model, not one new API. The installation preview is simulated.
+
+- Render Static Site at `https://web-history.onrender.com/` is the primary address; keep GitHub Pages as a mirror and use one canonical URL. Preserve readable initial HTML and share metadata in production builds.
+- Never animate polygon crops of the floating-paper illustration. The user rejected visible cut edges. Use complete independently curved paper surfaces, matching the original central proposal, high-left and low-right sheets, gray text rules, cobalt accents, subtle shadows and scroll-driven lift. Preserve the original image as an intact static fallback.
+- Era introductions must feel like part of the following chapter: larger animation, no dividing rule, no repeated introduction years. Let the chapter content gradually emerge behind the receding illustration as the user scrolls. Keep native scrolling and meaningful dates in the main heading and factual historical context.
