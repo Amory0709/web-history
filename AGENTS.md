@@ -60,3 +60,5 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - Transition scenes must stay at their initial state until their actual illustration enters the visible reading area below the header. Derive progress from the illustration bounds, not the earlier chapter/prologue boundary. Keep progress reversible and responsive, with an immediate completed state for reduced motion.
 
 - While the opening papers approach the viewer, raise the entire paper scene above the chapter copy and following CERN glass panel. Restore its resting depth at progress zero; keep fixed navigation usable and retain pointer-events:none. Do not raise only the canvas inside the old lower stacking context.
+
+- Give era introductions more room and a longer scroll reveal: larger desktop/tablet artwork, roughly a quarter more vertical space, a small scroll carry that keeps the scene readable, and a later fade into the chapter. Keep the initial trigger tied to visible artwork and calculate progress from an unshifted parent so carry never causes feedback. Preserve native scrolling and reduced motion.

@@ -169,3 +169,9 @@ Full-size hero, modal, interaction and responsive screenshots were inspected. Da
 - The paper scene inherited layer 0 from `.hero-art`, so the chapter copy (layer 2) and CERN section (layer 1) covered the enlarging sheets. Raising only the canvas would remain trapped inside that parent stacking context.
 - The entire scene now uses layer 3 only while scroll progress is between 0 and 1. At rest, after completion, and with reduced motion it retains the original layer. Fixed navigation remains above it and pointer events still pass through the artwork.
 - At desktop scroll 315px (flight progress 0.434), visually verified the central sheet now passes continuously in front of the CERN glass panel and the left sheet covers overlapping body text. The starting composition is unchanged; production build and whitespace validation pass.
+
+## More room for chapter animation — 21 September 2026
+
+- Expanded the desktop HTML introduction from about 586px to 730px, enlarged desktop/tablet artwork modestly, and reserved space below it for a gentle scroll carry. Phones keep their existing illustration width. No scroll locking or chapter pinning is introduced.
+- Extended the reveal distance by roughly 20–35% at the tested viewports, with a viewport-aware cap to keep the completed artwork below the header. The carry is capped at 104px and measured against its unshifted parent to avoid progress feedback. Delayed the fade until chapter entry reaches 62% (previously 42%).
+- Verified desktop and 390px phone starts remain at progress 0. On completion, the artwork stays fully visible: top/bottom 102/512px in the 780px desktop frame and 191/421px on the phone, at full opacity and progress 1. No horizontal overflow; reverse scrolling returns to the initial state. Production build and whitespace checks pass.

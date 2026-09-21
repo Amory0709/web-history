@@ -125,3 +125,5 @@ The build generates a readable initial HTML narrative from the same chapter data
 Search/share output includes a descriptive title and summary, canonical URL, `robots.txt`, a one-URL `sitemap.xml`, WebSite/WebPage JSON-LD, and Open Graph/Twitter metadata pointing to the 1200 × 630 `social-card.jpg`. The sitemap lists the actual homepage, not section fragments as pretend pages.
 
 After deployment, verify the `https://web-history.onrender.com/` URL-prefix property in Google Search Console, submit `https://web-history.onrender.com/sitemap.xml`, and inspect the homepage. Ownership verification and indexing requests require the owner's account; these have not been submitted automatically. These changes improve crawlability and link previews, but do not guarantee indexing, rankings or traffic.
+
+Chapter introductions use a longer scroll reveal, more vertical space and a gentle scroll carry so the completed illustration remains readable before the body takes over. Animation begins only when the artwork is visible and remains reversible; reduced motion shows the completed scene without carry.
