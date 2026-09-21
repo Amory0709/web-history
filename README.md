@@ -2,22 +2,23 @@
 
 **[Open the live experience](https://web-history.onrender.com/)** · [GitHub Pages mirror](https://amory0709.github.io/web-history/)
 
-A scroll-driven, interactive history of the Web: **13 chapters, 20 milestones, hands-on demonstrations, and 35 authoritative references**. Follow the ideas and people who turned linked documents into an application platform.
+A scroll-driven, interactive history of the Web: **14 chapters, 24 milestones, hands-on demonstrations, and 42 authoritative references**. Follow the ideas and people who turned linked documents into an application platform.
 
 The experience is written in English and uses SLB Sans, a white-and-cobalt editorial layout, floating-document artwork, and a clickable chronological timeline.
 
 ## Experience
 
 - Scroll through the story or jump using the frameless vertical timeline on the left. Positions follow a linear 1989–2023 calendar scale: a seven-year gap is seven times a one-year gap. Date ranges anchor at their first year; the current caption shows the full range.
-- Move through 12 large interactive introductions integrated into their chapters. The chapter body gradually emerges as the introduction recedes, without a dividing rule or repeated transition years. Their visuals introduce the next capability: linked documents, request/response, CSS styling, a JavaScript counter, a DOM tree, partial AJAX updates, an I/O queue, responsive reflow, a spatial canvas, an installable/offline app, Wasm and GPU work. Scroll or use each miniature’s control. Wheel and touch scrolling remain native.
-- Watch three complete, curved paper surfaces lift and drift apart as you scroll, and return when you scroll back. Their typography, paper grain, blue links and proportions echo the original artwork; the sheets and soft shadows are rendered separately without cutting up the illustration. The renderer is idle between scroll/resize updates and works without WebGL.
+- Move through 13 large interactive introductions integrated into their chapters. The chapter body gradually emerges as the introduction recedes, without a dividing rule or repeated transition years. Their visuals introduce the next capability: linked documents, request/response, CSS styling, a JavaScript counter, a DOM tree, partial AJAX updates, an I/O queue, responsive reflow, a spatial canvas, an application assembled from components, an installable/offline app, Wasm and GPU work. Scroll or use each miniature’s control. Wheel and touch scrolling remain native.
+- Watch three complete, curved paper surfaces flutter down and outward in staggered arcs as you scroll, and return when you scroll back. Their typography, paper grain, blue links and proportions echo the original artwork; the sheets and soft shadows are rendered separately without cutting up the illustration. The renderer is idle between scroll/resize updates and works without WebGL.
 - Explore the CERN diagram: keep the same computers and files in place, weave a spiderweb of document links, and follow a cross-system connection. A small minimalist spider appears beside the web; faint silk is a visual metaphor, not additional infrastructure.
-- Open **People** for 21 contributor profiles and 16 verified portraits, with dates and source/credit links. Earlier photographs are preferred where available; Nicola Pellow, Ian Fette, David M. Kristol and the newly added PWA contributors Frances Berriman and Alex Russell retain explicit missing-portrait placeholders. Names in the narrative also link to their profiles.
+- Open **People** for 25 contributor profiles and 20 verified portraits, with dates and source/credit links. Earlier photographs are preferred where available; Nicola Pellow, Ian Fette, David M. Kristol and the newly added PWA contributors Frances Berriman and Alex Russell retain explicit missing-portrait placeholders. Names in the narrative also link to their profiles.
 - Open **Timeline** to see when technologies were proposed, implemented, or standardized.
 - Open **Sources** or **The story & sources** for historical context, contributor credits, and original references.
 - Follow one page through HTML, CGI/cookies, CSS, JavaScript, DOM and AJAX. Your title, chosen style, reading list, likes and unfinished draft carry forward during your visit. Each stage ends with the next question to solve.
 - Open **Read the address** in the HTML chapter to explore scheme, hostname, port, path, query, fragment, and origin. Edit the example or compare default ports; parsing stays local.
 - Smooth a noisy signal using a real WebAssembly addition module. Move a highlighted sampling window to see its input values, Wasm sum and JavaScript average. Compare one-at-a-time and eight-together illustrations, then choose **On your GPU** beside them to run a real 64-value calculation in the same grid. Timers retain each completed run and distinguish animation time from end-to-end GPU time.
+- Explore **Frameworks (2012–14)**: save one article to update three real React components from shared state, reveal their boundaries, then compare the ideas behind AngularJS/Angular, React and Vue. The chapter distinguishes AngularJS 1.0 (2012), React’s public release (2013), Vue (2014) and the Angular 2 rewrite (2016), with creator profiles and primary sources. The tabs explain the approaches; they do not switch engines or benchmark frameworks.
 - Read a continuous, content-height narrative with oversized years and concise historical context directly under each title. Glass dialogs have slim inset scrollbars and a close control that stays visible. There are no page counters or scroll snapping.
 - Use **Play story / Pause story** to automatically scroll through the narrative and run the local demonstrations. Resume continues the remaining pause; wheel, touch, a manual interaction, keyboard navigation, or hiding the tab pauses the tour. If you move elsewhere, playback starts from that point. The tour never follows external links or opens audio. Reduced-motion preferences are respected without a separate motion toggle.
 
@@ -119,7 +120,7 @@ The production build and four existing worker/packaging tests pass. Browser chec
 
 The primary address is **https://web-history.onrender.com/**, hosted as a Render **Static Site**. Use `npm run build` with the publish directory `dist/client`. GitHub Pages remains a mirror. Both builds declare the Render URL as canonical.
 
-The build generates a readable initial HTML narrative from the same chapter data used by React. Visitors without JavaScript can read all 13 chapters and the authoritative source links; JavaScript enhances it into the animated experience. This is not crawler-specific content.
+The build generates a readable initial HTML narrative from the same chapter data used by React. Visitors without JavaScript can read all 14 chapters and the authoritative source links; JavaScript enhances it into the animated experience. This is not crawler-specific content.
 
 Search/share output includes a descriptive title and summary, canonical URL, `robots.txt`, a one-URL `sitemap.xml`, WebSite/WebPage JSON-LD, and Open Graph/Twitter metadata pointing to the 1200 × 630 `social-card.jpg`. The sitemap lists the actual homepage, not section fragments as pretend pages.
 
