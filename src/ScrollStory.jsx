@@ -26,7 +26,7 @@ export function useScrollStory(motion,onActive){
   let frame=0;const root=document.documentElement;
   const chapters=[...document.querySelectorAll('.chapter')];
   const passages=[...document.querySelectorAll('.epoch-transition')];
-  const sceneArtwork=new Map(passages.map(p=>[p,p.querySelector('.era-scene-art')]));
+  const sceneArtwork=new Map(passages.map(p=>[p,{art:p.querySelector('.era-scene-art'),anchor:p.querySelector('.era-scene')}]));
   const visible=new Set();
   const observer=new IntersectionObserver(entries=>{for(const entry of entries){if(entry.isIntersecting)visible.add(entry.target);else visible.delete(entry.target)}schedule()},{rootMargin:'160px 0px'});
   passages.forEach(p=>observer.observe(p));
@@ -45,7 +45,7 @@ export function useScrollStory(motion,onActive){
     section.style.setProperty('--demo-shift',`${((1-enter)*94).toFixed(2)}px`);
     section.style.setProperty('--entry-scale',(0.955+enter*.045).toFixed(4));
     section.style.setProperty('--handoff',i===0?'0':enter.toFixed(4));
-    section.style.setProperty('--intro-exit',i===0?'0':smooth(clamp((enter-.42)/.58)).toFixed(4));
+    section.style.setProperty('--intro-exit',i===0?'0':smooth(clamp((enter-.62)/.38)).toFixed(4));
     section.style.setProperty('--hero-drift',`${(motion?clamp(-bounds.top/(vh*1.1))*-60:0).toFixed(2)}px`);
    });
    onActive(current);
@@ -55,11 +55,17 @@ export function useScrollStory(motion,onActive){
     const bloom=Math.sin(p*Math.PI);
     // Wait for the illustration itself to enter the reading area. The passage
     // includes its heading and spacing, so its top was starting scenes too early.
-    const art=sceneArtwork.get(passage).getBoundingClientRect();
-    const start=Math.min(headerBottom+readingHeight*.73,vh-Math.min(art.height/2,readingHeight*.45)-24);
-    const distance=Math.max(180,Math.min(340,readingHeight*.38));
-    const sceneProgress=smooth(clamp((start-(art.top+art.height/2))/distance));
+    const {art,anchor}=sceneArtwork.get(passage);
+    const artHeight=art.getBoundingClientRect().height;
+    const start=Math.min(headerBottom+readingHeight*.73,vh-Math.min(artHeight/2,readingHeight*.45)-24);
+    const carry=Math.min(104,readingHeight*.12);
+    // Give each idea a longer reveal and gently resist scrolling. Measure the
+    // unshifted parent so the extra screen time cannot feed back into progress.
+    const available=start-headerBottom-artHeight/2-24+carry;
+    const distance=Math.max(180,Math.min(460,readingHeight*.51,Math.max(180,available)));
+    const sceneProgress=smooth(clamp((start-(anchor.getBoundingClientRect().top+artHeight/2))/distance));
     passage.style.setProperty('--scene-progress',motion?sceneProgress.toFixed(4):'1');
+    passage.style.setProperty('--scene-carry',`${(motion?carry*sceneProgress:0).toFixed(2)}px`);
     passage.style.setProperty('--passage',p.toFixed(4));
     passage.style.setProperty('--bloom',bloom.toFixed(4));
     passage.style.setProperty('--token-x',`${(motion?(p-.5)*-170:0).toFixed(2)}px`);
