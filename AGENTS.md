@@ -24,3 +24,5 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - Include interactive URL anatomy in the HTML chapter: scheme, hostname/host, port, path, query, fragment, and HTTP(S) origin, with authoritative sources.
 
 - GitHub Pages publishes the freshly built standalone HTML at `https://amory0709.github.io/web-history/` on pushes to main. Keep the deployment workflow and README current.
+
+- Treat this as a continuous website, not a slide deck: no page numbers or numbered chapter counters. Preserve meaningful historical years and named timeline navigation.
