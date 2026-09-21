@@ -1,0 +1,59 @@
+/* Dates are part of the story's visual hierarchy, not a footnote. */
+.chapter-date{margin-bottom:25px}
+.chapter-year{font-size:clamp(88px,9.2vw,148px);font-weight:300;letter-spacing:-.065em;line-height:.94;color:var(--blue);font-variant-numeric:lining-nums tabular-nums;white-space:nowrap}
+.chapter-year.year-range{font-size:clamp(68px,7vw,112px)}
+.hero .chapter-year{font-size:clamp(120px,13vw,200px)}
+.chapter-kind{margin-top:17px;font-size:14px;line-height:1.5;color:#5b6680}
+.chapter-history{font-size:14px;line-height:1.65;color:#63718c;max-width:470px;margin-top:22px;padding-left:15px;border-left:2px solid #bccaf0;text-wrap:pretty}
+.chapter-copy>.subtitle{margin-top:26px}
+.hero .chapter-sticky{padding-top:125px}
+.chronology-point b{font-size:13px}
+.chronology-point>span{font-size:11px}
+.chronology-caption>span{font-size:31px;font-weight:300;letter-spacing:-1px;line-height:1.05}
+.chronology-caption strong{font-size:12px}
+.chronology-caption{min-height:83px}
+.epoch-transition{height:clamp(360px,37vw,515px)}
+.epoch-years{font-size:clamp(90px,11.8vw,180px);top:12%;gap:30px}
+.epoch-token{top:47%;right:8%}
+.epoch-message{top:64%}
+.epoch-message small{font-size:14px}
+
+/* The scrollable surface is inset from the glass shell's rounded corners. */
+.story-dialog{padding:12px;overflow:hidden;max-height:86svh}
+.dialog-scroll{max-height:calc(86svh - 26px);overflow-y:auto;overflow-x:hidden;padding:29px 37px 35px;overscroll-behavior:contain;scrollbar-gutter:stable;scrollbar-width:thin;scrollbar-color:#93a0b45c transparent;border-radius:14px;outline-offset:-4px}
+.dialog-scroll:hover,.dialog-scroll:focus-within{scrollbar-color:#8393b0a3 transparent}
+.dialog-scroll::-webkit-scrollbar{width:6px;height:6px}
+.dialog-scroll::-webkit-scrollbar-track{background:transparent;margin-block:16px}
+.dialog-scroll::-webkit-scrollbar-thumb{background:#93a0b478;border-radius:20px}
+.dialog-scroll::-webkit-scrollbar-thumb:hover{background:#7187b0b3}
+.story-dialog .dialog-close{position:absolute;right:26px;top:26px;float:none;margin:0;z-index:5;width:40px;height:40px;background:#ffffffce;backdrop-filter:blur(12px);border:1px solid #dfe5f0;box-shadow:0 3px 15px #283a6010}
+.dialog-scroll>.kicker{padding-right:55px}
+.detail-dialog .dialog-scroll{padding:24px 28px 30px}
+.url-dialog .dialog-scroll{padding:24px 29px 30px}
+
+/* Silk connects fixed document nodes; the spider is a playful visual metaphor. */
+.cern-lab{position:relative}
+.network-controls{padding-right:69px;min-height:42px}
+.web-companion{position:absolute;right:14px;top:0;width:76px;height:104px;opacity:0;transform:translateY(-18px);transition:opacity .7s,transform 1.2s cubic-bezier(.2,.8,.2,1.2);pointer-events:none}
+.has-web .web-companion{opacity:1;transform:none}
+.web-companion svg{width:100%;height:100%;overflow:visible}
+.spider-silk{stroke:#9caee7;stroke-width:1;fill:none}
+.spider-legs{fill:none;stroke:#253652;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.spider-body{fill:#253652}
+.spider-eye{fill:#fff}
+.spider-pupil{fill:#253652}
+.spider-smile{stroke:#fff;stroke-width:1.2;fill:none;stroke-linecap:round}
+.has-web .tree-edges line{stroke:#a2b0de;transition:stroke .6s}
+.silk-rings path,.web-edges path{fill:none;stroke:#647ddb;stroke-width:1.15;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;opacity:0;transition:stroke-dashoffset 1.6s cubic-bezier(.25,.7,.2,1),opacity .5s;transition-delay:var(--weave-delay,0ms)}
+.silk-rings.connected path{stroke-dashoffset:0;opacity:.34}
+.web-edges.connected path{stroke-dashoffset:0;opacity:.56}
+.web-edges.connected .selected-edge{opacity:1;stroke:#0014dc;stroke-width:1.8}
+.web-edges.connected .cross-strand{opacity:.26;stroke-width:.9}
+.web-edges.connected .cross-strand.selected-edge{opacity:1;stroke-width:1.8}
+
+@media(max-width:1100px){.chronology-point b{font-size:11px}.chronology-point>span{font-size:9px}.chronology-caption>span{font-size:25px}.chapter-year{font-size:104px}.chapter-year.year-range{font-size:clamp(54px,6.2vw,79px)}.hero .chapter-year{font-size:145px}.epoch-years{font-size:clamp(70px,10.7vw,130px);gap:20px}}
+@media(max-width:900px){.chapter-year{font-size:120px}.chapter-year.year-range{font-size:95px}.hero .chapter-sticky{padding-top:120px}}
+@media(max-width:700px){.chronology-point b{font-size:10px}.chronology-caption>span{font-size:16px;letter-spacing:-.5px}.chronology-caption strong{font-size:9px}.chronology-caption{min-height:73px}.epoch-transition{height:315px}.epoch-years{font-size:clamp(40px,13.2vw,85px);gap:13px;top:23%}.epoch-rule{width:22px}.epoch-token{top:11%;right:var(--space);font-size:10px}.epoch-message{top:61%}.epoch-message small{font-size:12px}.epoch-word{font-size:75px}}
+@media(max-width:580px){.hero .chapter-sticky{padding-top:108px}.hero .chapter-year{font-size:clamp(102px,29vw,156px)}.chapter-year{font-size:clamp(80px,24vw,130px)}.chapter-year.year-range{font-size:clamp(46px,14.3vw,80px)}.chapter-date{margin-bottom:23px}.chapter-kind{font-size:12px;margin-top:12px}.chapter-history{font-size:12px;line-height:1.7;margin-top:20px;padding-left:12px}.chapter-copy>.subtitle{margin-top:23px}.story-dialog{padding:9px}.dialog-scroll,.detail-dialog .dialog-scroll,.url-dialog .dialog-scroll{max-height:calc(86svh - 20px);padding:24px 15px 28px;border-radius:12px}.story-dialog .dialog-close{top:19px;right:20px;width:34px;height:34px}.dialog-scroll>.kicker{font-size:11px;padding-right:42px}.dialog-scroll>.kicker span{font-size:11px}.web-companion{width:62px;height:85px;right:7px}.network-controls{padding-right:45px;gap:2px}.network-controls button{padding:8px;font-size:10px}.web-edges path{stroke-width:1.4}}
+@media(max-height:620px){.chronology-point b{font-size:8px}.chronology-caption{min-height:48px}.chronology-caption>span{font-size:18px}.chronology-caption strong{font-size:9px}}
+@media(prefers-reduced-motion:reduce){.web-companion,.silk-rings path,.web-edges path{transition:none!important}}

@@ -18,9 +18,9 @@ export function UrlAnatomy(){
   const parts=url?[['scheme',url.protocol+'//'],['hostname',url.hostname],['port',url.port?':'+url.port:'(default port)'],['path',url.pathname],['query',url.search||'(no query)'],['fragment',url.hash||'(no fragment)']]:[];
   const [label,question,description]=explain[selected];
   return <><button className="url-invitation" onClick={()=>dialog.current.showModal()}>Read the address: scheme, host & more <ArrowUpRight size={15}/></button>
-    <dialog ref={dialog} className="url-dialog" aria-labelledby="url-heading" onClick={e=>{if(e.target===e.currentTarget)dialog.current.close()}}>
+    <dialog ref={dialog} className="url-dialog story-dialog" aria-labelledby="url-heading" onClick={e=>{if(e.target===e.currentTarget)dialog.current.close()}}>
       <button className="dialog-close circle-button" aria-label="Close address explorer" onClick={()=>dialog.current.close()}><X size={22}/></button>
-      <p className="kicker"><span>A CLOSER LOOK / URL</span></p><h2 id="url-heading">Every part has a job.</h2>
+      <div className="dialog-scroll" tabIndex={0} role="region" aria-label="Address explorer content"><p className="kicker"><span>A CLOSER LOOK / URL</span></p><h2 id="url-heading">Every part has a job.</h2>
       <p className="url-intro">A page needs more than a name. Its address tells the browser where to go and what to ask for. Select a part to see what it does.</p>
       <div className="url-parts" role="group" aria-label="Parts of the URL">{parts.map(([id,value])=><button key={id} className={selected===id?'selected':''} aria-pressed={selected===id} onClick={()=>setSelected(id)}><code>{value}</code><span>{explain[id][0]}</span></button>)}</div>
       <section className="url-explanation" aria-live="polite"><span>{label}</span><h3>{question}</h3><p>{description}</p></section>
@@ -31,5 +31,5 @@ export function UrlAnatomy(){
       <p className="url-origin-note">For HTTP(S), changing the scheme, hostname or effective port changes the origin. Changing only the path, query or fragment does not. Browsers use origins as an important security boundary.</p>
       <p className="url-era">This uses modern HTTPS and the URL API to explain address structure; it is not a reconstruction of a 1990 browser. The term is <strong>scheme</strong>, rather than schema.</p>
       <div className="url-references"><a className="text-link" href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_URL" target="_blank" rel="noopener noreferrer">MDN: What is a URL?<ArrowUpRight size={15}/></a><a className="text-link" href="https://url.spec.whatwg.org/" target="_blank" rel="noopener noreferrer">WHATWG URL Standard<ArrowUpRight size={15}/></a></div>
-    </dialog></>;
+    </div></dialog></>;
 }
