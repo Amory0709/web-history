@@ -26,6 +26,7 @@ async function embed(directory) {
 await embed(resolve(root,'public'));
 html = html.replace(scriptTag[0],()=>`<script type="module">${js.replace(/<\/script/gi,'<\\/script')}</script>`);
 html = html.replace(styleTag[0],()=>`<style>${css}</style>`);
+html = html.replace(/^[\t ]+$/gm,'');
 const output = resolve(root,'The-Web-A-Living-History.html');
 await writeFile(output,html);
 console.log(`Exported self-contained HTML (${Buffer.byteLength(html)} bytes).`);
