@@ -199,3 +199,10 @@ Scope: the 14 chapter demos, technology introductions, opening/CERN section and 
 Evidence captured in this audit: mobile-audit-01-foundations.jpg through mobile-audit-08-narrow-interactions.jpg; accepted after views include mobile-audit-after-introductions.jpg, mobile-audit-after-applications.jpg, mobile-audit-after-wasm.jpg and mobile-audit-09-timing-rows.jpg. A transient blank screenshot taken while the preview reloaded was rejected.
 
 Implementation is primarily scoped to `src/mobile.css`; desktop layouts retain their existing presentation. No timing benchmark or GPU availability claim is inferred from the illustration. Production build and whitespace checks pass.
+
+## Layered terrain introduction — 22 September 2026
+
+- Replaced the Web Platform introduction's decorative SVG curves with a procedural 3D height field projected through Canvas 2D. A 24-by-24 mesh rises into two ridges and a valley; two lower surfaces separate as scroll progress advances, while a cobalt scan follows the topography. This is an illustrative terrain, not survey data.
+- Retained the existing scroll-visible trigger, longer passage and manual scene override. Verified the flat state and raised state through “Shape the terrain”, along with the desktop composition and 360px mobile view. Desktop pointer movement adds subtle parallax; touch scrolling stays native.
+- Rendering responds to visible scene changes and settles rather than running an idle animation loop. Reduced motion bypasses interpolation; an SVG fallback remains if Canvas 2D is unavailable.
+- Enlarged the final projection after review. Sampled the projected grid at 21 scroll positions: x=33.6–290.3 and y=15.5–214.8 within its 320-by-220 drawing coordinates. Production build and whitespace checks pass.

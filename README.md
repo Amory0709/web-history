@@ -129,3 +129,5 @@ After deployment, verify the `https://web-history.onrender.com/` URL-prefix prop
 Chapter introductions use a longer scroll reveal, more vertical space and a gentle scroll carry so the completed illustration remains readable before the body takes over. Animation begins only when the artwork is visible and remains reversible; reduced motion shows the completed scene without carry.
 
 On phones, teaching demos reflow for the narrow reading column: framework components and Wasm steps stack vertically, run timings use full-width rows, and the responsive example opens at 320 CSS pixels. Chapter illustrations scale to available space while their scroll timing stays reversible.
+
+The Canvas/WebGL introduction projects a procedural layered terrain in 3D: a flat grid gains relief and reveals two underlying surfaces as you scroll. A blue scan line follows the shape; “Shape the terrain” switches between the flat and raised states. This is an illustrative Canvas 2D projection, not geological survey data or a requirement for WebGL support. Drawing stops when the visible scene settles.
