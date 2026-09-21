@@ -62,3 +62,5 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - While the opening papers approach the viewer, raise the entire paper scene above the chapter copy and following CERN glass panel. Restore its resting depth at progress zero; keep fixed navigation usable and retain pointer-events:none. Do not raise only the canvas inside the old lower stacking context.
 
 - Give era introductions more room and a longer scroll reveal: larger desktop/tablet artwork, roughly a quarter more vertical space, a small scroll carry that keeps the scene readable, and a later fade into the chapter. Keep the initial trigger tied to visible artwork and calculate progress from an unshifted parent so carry never causes feedback. Preserve native scrolling and reduced motion.
+
+- On phones, the six-capability journey indicator must use a compact two-column, three-row layout. Keep each marker beside its label, remove the broken single horizontal connector, and distinguish the current, acquired and upcoming capabilities without chapter numbers. Preserve desktop chronology.

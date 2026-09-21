@@ -175,3 +175,8 @@ Full-size hero, modal, interaction and responsive screenshots were inspected. Da
 - Expanded the desktop HTML introduction from about 586px to 730px, enlarged desktop/tablet artwork modestly, and reserved space below it for a gentle scroll carry. Phones keep their existing illustration width. No scroll locking or chapter pinning is introduced.
 - Extended the reveal distance by roughly 20–35% at the tested viewports, with a viewport-aware cap to keep the completed artwork below the header. The carry is capped at 104px and measured against its unshifted parent to avoid progress feedback. Delayed the fade until chapter entry reaches 62% (previously 42%).
 - Verified desktop and 390px phone starts remain at progress 0. On completion, the artwork stays fully visible: top/bottom 102/512px in the 780px desktop frame and 191/421px on the phone, at full opacity and progress 1. No horizontal overflow; reverse scrolling returns to the initial state. Production build and whitespace checks pass.
+
+## Mobile six-capability indicator — 21 September 2026
+
+- Replaced the wrapped mobile timeline with a two-column, three-row capability list. Removed its single detached connector and kept every marker inline with its label. The current capability has a pale blue background; completed and upcoming items retain distinct marker states. Desktop remains a single horizontal sequence.
+- Verified 360px and 430px phone previews: all six labels fit, the two columns align, and document width does not overflow. Existing aria-current semantics and shared page state are unchanged. Production build and whitespace checks pass.
