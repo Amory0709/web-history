@@ -163,3 +163,9 @@ Full-size hero, modal, interaction and responsive screenshots were inspected. Da
 - Changed all 13 chapter introductions to derive progress from the illustration center within the usable viewport below the fixed header. Titles and whitespace entering the viewport no longer start the illustration. Initial CSS progress is zero instead of 0.4; reduced motion still shows the completed composition.
 - Verified desktop HTML at an artwork top of 833.7px in a 936px viewport: progress 0; at 383.7px: progress 0.3699. Scrolling backward restored the start state. Checked the same entry and in-view positions in 390px and 768px frames; progress stays zero on arrival and advances once the illustration is in view.
 - Production build passes and the standalone export is regenerated. Existing paper-flight and connector-layer fixes remain included.
+
+## Opening paper foreground correction — 21 September 2026
+
+- The paper scene inherited layer 0 from `.hero-art`, so the chapter copy (layer 2) and CERN section (layer 1) covered the enlarging sheets. Raising only the canvas would remain trapped inside that parent stacking context.
+- The entire scene now uses layer 3 only while scroll progress is between 0 and 1. At rest, after completion, and with reduced motion it retains the original layer. Fixed navigation remains above it and pointer events still pass through the artwork.
+- At desktop scroll 315px (flight progress 0.434), visually verified the central sheet now passes continuously in front of the CERN glass panel and the left sheet covers overlapping body text. The starting composition is unchanged; production build and whitespace validation pass.

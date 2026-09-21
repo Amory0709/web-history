@@ -58,3 +58,5 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - In the HTML introduction, the blue connecting path and destination dot must render in front of BOTH glass document cards. Keep the link scene stacking context local so it never covers fixed navigation.
 
 - Transition scenes must stay at their initial state until their actual illustration enters the visible reading area below the header. Derive progress from the illustration bounds, not the earlier chapter/prologue boundary. Keep progress reversible and responsive, with an immediate completed state for reduced motion.
+
+- While the opening papers approach the viewer, raise the entire paper scene above the chapter copy and following CERN glass panel. Restore its resting depth at progress zero; keep fixed navigation usable and retain pointer-events:none. Do not raise only the canvas inside the old lower stacking context.
