@@ -1,5 +1,6 @@
 import React,{useEffect} from 'react';
 import {yearOf} from './Chronology';
+import {EraScene} from './EraScenes';
 export const transitions={
  html:['A link needs a language.','The idea takes shape.','<a href="…">'],
  server:['A document becomes a service.','The Web starts answering.','request → response'],
@@ -15,8 +16,8 @@ export const transitions={
  webgpu:['One operation becomes many.','A wider canvas for computation.','@compute']
 };
 export function ChapterTransition({from,to}){
- const [title,subtitle,token]=transitions[to.id];
- return <div className={'epoch-transition transition-'+to.id} data-transition={to.id} aria-hidden="true"><div className="epoch-token">{token}</div><div className="epoch-years"><span className="epoch-from">{yearOf(from)}</span><span className="epoch-rule"/><span className="epoch-to">{yearOf(to)}</span></div><div className="epoch-message"><span>{title}</span><small>{subtitle}</small></div><div className="epoch-word">{to.nav}</div><div className="epoch-thread"/></div>
+ const [title,subtitle]=transitions[to.id];
+ return <section id={'bridge-'+to.id} className={'epoch-transition era-transition transition-'+to.id} data-transition={to.id} aria-label={'A bridge to '+to.nav}><div className="era-intro"><p className="era-dates"><span>{yearOf(from)}</span><i aria-hidden="true"/><b>{yearOf(to)}</b></p><h3>{title}</h3><p>{subtitle}</p></div><EraScene id={to.id}/><div className="epoch-thread" aria-hidden="true"/></section>
 }
 const clamp=value=>Math.max(0,Math.min(1,value));
 const smooth=value=>value*value*(3-2*value);
@@ -39,6 +40,7 @@ export function useScrollStory(motion,onActive){
     section.style.setProperty('--entry-shift',`${((1-enter)*62).toFixed(2)}px`);
     section.style.setProperty('--demo-shift',`${((1-enter)*94).toFixed(2)}px`);
     section.style.setProperty('--entry-scale',(0.955+enter*.045).toFixed(4));
+    if(i===0){const art=section.querySelector('.hero-art');if(art){const r=art.getBoundingClientRect();const flight=motion?smooth(clamp((window.innerHeight*.18-r.top)/Math.max(300,r.height*.9))):0;art.style.setProperty('--flight',flight.toFixed(4))}}
     section.style.setProperty('--hero-drift',`${(motion?clamp(-bounds.top/(vh*1.1))*-60:0).toFixed(2)}px`);
    });
    onActive(current);
@@ -46,6 +48,7 @@ export function useScrollStory(motion,onActive){
     const rect=passage.getBoundingClientRect();
     const p=clamp((vh*.92-rect.top)/(vh*.92+rect.height*.52));
     const bloom=Math.sin(p*Math.PI);
+    passage.style.setProperty('--scene-progress',motion?clamp((p-.18)/.58).toFixed(4):'1');
     passage.style.setProperty('--passage',p.toFixed(4));
     passage.style.setProperty('--bloom',bloom.toFixed(4));
     passage.style.setProperty('--token-x',`${(motion?(p-.5)*-170:0).toFixed(2)}px`);

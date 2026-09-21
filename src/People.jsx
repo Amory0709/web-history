@@ -1,5 +1,6 @@
 import React from 'react';
 import {ArrowUpRight,UserCircle} from '@phosphor-icons/react';
+import {portraits} from './portraits';
 
 // Biography links are separate from the primary historical sources.
 export const people = [
@@ -20,7 +21,9 @@ export const people = [
  ['Alexey Melnikov','https://datatracker.ietf.org/person/alexey.melnikov@isode.com','Co-authored the WebSocket protocol RFC.'],
  ['Ian Hickson','https://en.wikipedia.org/wiki/Ian_Hickson','An editor of the HTML5 specification.'],
  ['Dave Raggett','https://www.w3.org/People/Raggett/','An early HTML contributor and coauthor of its history.'],
- ['Allen Wirfs-Brock','https://en.wikipedia.org/wiki/Allen_Wirfs-Brock','ECMAScript editor and coauthor of JavaScript’s history.'],
+ ['Allen Wirfs-Brock','https://www.wirfs-brock.com/allen/about','ECMAScript editor and coauthor of JavaScript’s history.'],
+ ['Frances Berriman','https://fberriman.com/about/','Helped name Progressive Web Apps and advocate for the open Web.'],
+ ['Alex Russell','https://infrequently.org/','Articulated the Progressive Web App model in 2015.'],
  ['David Kristol','https://datatracker.ietf.org/person/dmk@bell-labs.com','Co-authored the HTTP State Management Mechanism RFC.'],
 ];
 const names = new Map(people.map(p=>[p[0],p]));
@@ -29,4 +32,4 @@ export function PeopleText({children}) {
  if(typeof children!=='string') return children;
  return children.split(pattern).map((part,i)=>names.has(part)?<a className="person-link" key={i} href={names.get(part)[1]} target="_blank" rel="noopener noreferrer" title={`About ${part}`}>{part}</a>:part);
 }
-export function PeopleDirectory(){return <><p className="panel-intro">Meet the people behind the ideas. Open their profiles, explore photographs, and follow their work. The technology sources remain linked beside each story.</p><div className="people-directory">{people.map(([name,url,role])=><article key={name} className="person-card"><UserCircle size={27} weight="light" aria-hidden="true"/><h3><a href={url} target="_blank" rel="noopener noreferrer">{name}<ArrowUpRight size={15}/></a></h3><p>{role}</p><div><a href={url} target="_blank" rel="noopener noreferrer">Profile & work ↗</a><a href={'https://commons.wikimedia.org/w/index.php?title=Special:MediaSearch&type=image&search='+encodeURIComponent(name+(['Ian Fette','Alexey Melnikov','David Kristol'].includes(name)?' IETF':''))} target="_blank" rel="noopener noreferrer" aria-label={`Find photographs of ${name}`}>Photographs ↗</a></div></article>)}</div><p className="demo-note">Photograph links open Wikimedia Commons search; availability varies. Groups and standards are credited collectively, rather than assigned a single inventor.</p></>}
+export function PeopleDirectory(){return <><p className="panel-intro">The people behind the ideas, in photographs from their journeys. Earlier portraits are preferred where available. Open a portrait for its original source, or a name to explore their work.</p><div className="people-directory">{people.map(([name,url,role])=>{const photo=portraits[name];return <article key={name} className="person-card">{photo?<figure className="person-portrait"><a href={photo.source} target="_blank" rel="noopener noreferrer" aria-label={`Original photograph of ${name}`}><img src={photo.src} alt={name} loading="lazy" decoding="async" style={{objectPosition:photo.position||'50% 25%'}}/></a><figcaption>{photo.date}</figcaption></figure>:<div className="portrait-unavailable"><UserCircle size={54} weight="thin" aria-hidden="true"/><span>Portrait not yet verified</span></div>}<h3><a href={url} target="_blank" rel="noopener noreferrer">{name}<ArrowUpRight size={15}/></a></h3><p>{role}</p><div className="person-links"><a href={url} target="_blank" rel="noopener noreferrer">Profile & work ↗</a>{photo&&<a href={photo.source} target="_blank" rel="noopener noreferrer">Photo source ↗</a>}</div>{photo&&<details className="portrait-credit"><summary>Photo credit</summary><p>{photo.credit} · {photo.license}. <a href={photo.source} target="_blank" rel="noopener noreferrer">Original & attribution ↗</a></p></details>}</article>})}</div><p className="demo-note">Photographs show different moments in these careers; dates refer to the photograph when known, not to the invention. No portraits have been generated or made younger. Standards and collective work are credited to their communities.</p></>}
