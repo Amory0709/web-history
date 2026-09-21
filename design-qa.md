@@ -150,3 +150,10 @@ Full-size hero, modal, interaction and responsive screenshots were inspected. Da
 - Added four authentic, visually checked public profile photographs and biography links for Miško Hevery, Adam Abrons, Jordan Walke and Evan You. Photo dates are explicitly unknown; no age or historical date is inferred.
 - Checked desktop and 390px/768px frames. Document widths were 375/753px respectively (excluding scrollbars), matching their client widths without horizontal overflow. The mobile save action updated all views.
 - Production build and all four existing deployment tests pass; git diff --check passes. Initial HTML includes all 14 chapters and 42 references. The standalone export embeds the four new portraits, with no unresolved portrait paths.
+
+## Forward paper flight and HTML connector depth — 21 September 2026
+
+- Changed opening trajectories to positive camera depth: intact curved sheets approach the viewer and enlarge through perspective, with staggered starts and gentle outward drift. Preserved the original resting camera framing while enlarging the drawing area to avoid internal canvas clipping.
+- Corrected the HTML introduction’s connector stacking: both transformed glass cards use layer 0; the connecting SVG and its destination dot use layer 1 inside a local stacking context. Verified the complete blue curve and endpoint remain in front of the destination card. Navigation retains its existing foreground layer.
+- Checked the desktop opening at rest and mid-scroll, plus 390px and 768px responsive frames with no horizontal overflow (375/375 and 753/753 content/client widths). On narrow screens, reduced scroll carry and an earlier whole-scene fade preserve the following text; the CERN section explicitly stays above the paper artwork.
+- Reduced motion keeps progress, translation and handoff fade at zero. The animation remains scroll-driven and reversible. Production build and the four existing deployment checks passed; regenerated the standalone export after final responsive adjustments.
