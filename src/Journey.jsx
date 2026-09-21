@@ -62,8 +62,8 @@ export function JourneyDemo({stage,onNext}) {
     : stage==='dom' ? selected==='h1' ? `document.querySelector("h1").textContent\n  = ${JSON.stringify(page.title)};` : selected==='p' ? `document.querySelector("p").textContent\n  = ${JSON.stringify(page.paragraph)};` : page.note ? 'document.querySelector("article").append(newNote);' : 'newNote.remove();'
     : null;
   return <div className="demo journey-demo" data-journey={stage}>
-    <div className="journey-heading"><span>ONE PAGE, SIX BREAKTHROUGHS</span><span>{String(step+1).padStart(2,'0')} / 06</span></div>
-    <ol className="journey-steps" aria-label="Capabilities in this chapter">{labels.map((label,i)=><li key={label} className={i===step?'current':i<step?'acquired':''} aria-current={i===step?'step':undefined}><span>{i+1}</span>{label}</li>)}</ol>
+    <div className="journey-heading"><span>ONE PAGE, SIX BREAKTHROUGHS</span></div>
+    <ol className="journey-steps" aria-label="Capabilities in this chapter">{labels.map((label,i)=><li key={label} className={i===step?'current':i<step?'acquired':''} aria-current={i===step?'step':undefined}>{label}</li>)}</ol>
     <p className="journey-hint">{hints[step]}</p>
     {stage==='css'&&<Options label="CSS styles" items={[["plain","No CSS"],["editorial","Editorial"],["night","After dark"]]} value={page.styled?page.theme:'plain'} onChange={theme=>update({theme,styled:true})}/>}
     {stage==='ajax'&&<Options label="Page update mode" items={[["reload","Full-page navigation"],["ajax","AJAX update"]]} value={mode} onChange={value=>{if(!loading)setMode(value)}}/>}
