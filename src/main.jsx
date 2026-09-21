@@ -13,3 +13,4 @@ createRoot(document.getElementById("root")).render(
 );
 
 import './era-scenes.css';
+import './chapter-flow.css';

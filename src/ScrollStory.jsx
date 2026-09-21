@@ -1,5 +1,4 @@
 import React,{useEffect} from 'react';
-import {yearOf} from './Chronology';
 import {EraScene} from './EraScenes';
 export const transitions={
  html:['A link needs a language.','The idea takes shape.','<a href="…">'],
@@ -15,9 +14,9 @@ export const transitions={
  wasm:['Another language joins the conversation.','Bring an algorithm. Keep the Web.','00 61 73 6d'],
  webgpu:['One operation becomes many.','A wider canvas for computation.','@compute']
 };
-export function ChapterTransition({from,to}){
+export function ChapterTransition({to}){
  const [title,subtitle]=transitions[to.id];
- return <section id={'bridge-'+to.id} className={'epoch-transition era-transition transition-'+to.id} data-transition={to.id} aria-label={'A bridge to '+to.nav}><div className="era-intro"><p className="era-dates"><span>{yearOf(from)}</span><i aria-hidden="true"/><b>{yearOf(to)}</b></p><h3>{title}</h3><p>{subtitle}</p></div><EraScene id={to.id}/><div className="epoch-thread" aria-hidden="true"/></section>
+ return <div id={'bridge-'+to.id} className={'epoch-transition era-transition chapter-prologue transition-'+to.id} data-transition={to.id} aria-label={'Introducing '+to.nav}><div className="era-intro"><p className="era-opening">{title}</p><p>{subtitle}</p></div><EraScene id={to.id}/></div>
 }
 const clamp=value=>Math.max(0,Math.min(1,value));
 const smooth=value=>value*value*(3-2*value);
@@ -35,12 +34,14 @@ export function useScrollStory(motion,onActive){
     const bounds=section.getBoundingClientRect();
     if(bounds.top<=vh*.42)current=i;
     if(bounds.top>vh+180||bounds.bottom< -180)return;
-    const enter=motion?smooth(clamp((vh*.94-bounds.top)/(vh*.54))):1;
+    const content=section.querySelector('.chapter-sticky').getBoundingClientRect();
+    const enter=motion?smooth(clamp((vh*.9-content.top)/(vh*.62))):1;
     section.style.setProperty('--entry',enter.toFixed(4));
     section.style.setProperty('--entry-shift',`${((1-enter)*62).toFixed(2)}px`);
     section.style.setProperty('--demo-shift',`${((1-enter)*94).toFixed(2)}px`);
     section.style.setProperty('--entry-scale',(0.955+enter*.045).toFixed(4));
-    if(i===0){const art=section.querySelector('.hero-art');if(art){const r=art.getBoundingClientRect();const flight=motion?smooth(clamp((window.innerHeight*.18-r.top)/Math.max(300,r.height*.9))):0;art.style.setProperty('--flight',flight.toFixed(4))}}
+    section.style.setProperty('--handoff',i===0?'0':enter.toFixed(4));
+    section.style.setProperty('--intro-exit',i===0?'0':smooth(clamp((enter-.42)/.58)).toFixed(4));
     section.style.setProperty('--hero-drift',`${(motion?clamp(-bounds.top/(vh*1.1))*-60:0).toFixed(2)}px`);
    });
    onActive(current);

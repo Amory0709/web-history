@@ -1,0 +1,24 @@
+/* The prologue belongs to its chapter. One date, one continuous reveal. */
+.chapter:not(.hero){--handoff:0;position:relative;margin-top:36px}
+.chapter-prologue.era-transition{position:relative;display:flex;flex-direction:column;justify-content:center;gap:26px;min-height:580px;padding:35px var(--space) 40px;margin:0;isolation:auto;border:0;scroll-margin-top:100px}
+.chapter-prologue .era-intro{display:block;text-align:center;max-width:none;margin:0}
+.chapter-prologue .era-opening{font-size:clamp(23px,2.5vw,35px);letter-spacing:-.7px;line-height:1.2;color:#425674}
+.chapter-prologue .era-intro>p:last-child{font-size:13px;margin-top:11px;color:#929eb1}
+.chapter-prologue .era-scene{max-width:760px}
+.chapter-prologue .era-scene-art{height:374px;perspective:1300px;transform:none;transform-origin:center}
+.chapter-prologue .era-scene-art>div{width:320px;max-width:none;margin:0 auto;left:auto;transform:scale(1.65);transform-origin:center top}
+.chapter-prologue .era-scene-controls{max-width:528px;width:100%;margin:0 auto;padding:8px 0 0}
+.chapter-prologue .scene-action{font-size:12px}
+.chapter-prologue .era-scene-controls>small{font-size:10px}
+.chapter:not(.hero)>.chapter-sticky{padding-top:0;margin-top:-28px;z-index:1}
+.chapter-prologue .era-browser,.chapter-prologue .era-document{box-shadow:0 14px 38px #24427709}
+html[data-scroll-story=ready][data-motion=on] .chapter-prologue{opacity:calc(1 - var(--intro-exit,0)*.95);transform:translateY(calc(var(--intro-exit,0)*-60px));transform-origin:center bottom}
+html[data-scroll-story=ready][data-motion=on] .chapter-prologue:focus-within{opacity:1}
+html[data-scroll-story=ready][data-motion=on] .chapter:not(.hero) .chapter-copy,
+html[data-scroll-story=ready][data-motion=on] .chapter:not(.hero) .chapter-sticky>.demo,
+html[data-scroll-story=ready][data-motion=on] .chapter:not(.hero) .chapter-sticky>.journey-demo{opacity:var(--entry)}
+@media(max-width:1100px){.chapter-prologue.era-transition{min-height:520px}.chapter-prologue .era-scene-art{height:328px}.chapter-prologue .era-scene-art>div{transform:scale(1.45)}.chapter-prologue .era-scene-controls{max-width:464px}}
+@media(max-width:700px){.chapter-prologue.era-transition{gap:24px;min-height:440px;padding:26px var(--space) 65px}.chapter-prologue .era-opening{font-size:25px}.chapter-prologue .era-scene-art{height:275px}.chapter-prologue .era-scene-art>div{transform:scale(1.2)}.chapter-prologue .era-scene-controls{max-width:384px}.chapter-prologue .era-intro>p:last-child{font-size:12px}.chapter:not(.hero)>.chapter-sticky{margin-top:-15px}}
+@media(max-width:480px){.chapter-prologue.era-transition{min-height:378px;padding:26px 8px 50px;gap:22px}.chapter-prologue .era-intro{padding:0 13px}.chapter-prologue .era-opening{font-size:24px}.chapter-prologue .era-scene-art{height:230px}.chapter-prologue .era-scene-art>div{width:320px;left:50%;margin:0 0 0 -160px;transform:scale(.96)}.chapter-prologue .era-scene-controls{padding:10px 13px 0}.chapter-prologue .scene-action{font-size:11px}.chapter-prologue .era-scene-controls>small{font-size:9px}}
+@media(max-width:360px){.chapter-prologue .era-scene-art>div{transform:scale(.82)}.chapter-prologue .era-scene-art{height:193px}}
+@media(prefers-reduced-motion:reduce){.chapter-prologue{transform:none!important;opacity:1!important}}
