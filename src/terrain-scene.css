@@ -1,0 +1,7 @@
+.terrain-scene{position:relative;isolation:isolate}
+.terrain-scene>canvas{position:absolute;inset:0 0 auto;width:100%;height:205px;display:block;opacity:0}
+.terrain-scene.terrain-ready>canvas{opacity:1}
+.terrain-scene .terrain-fallback{stroke:#2854d8;stroke-width:.8}
+.terrain-scene.terrain-ready .terrain-fallback{visibility:hidden}
+.platform-scene.terrain-scene>code{bottom:-2px;font-size:9px;letter-spacing:0;color:#7188b6}
+@media(max-width:580px){.platform-scene.terrain-scene>code{font-size:12px}}
