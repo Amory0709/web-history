@@ -117,3 +117,17 @@ Full-size hero, modal, interaction and responsive screenshots were inspected. Da
 - [x] Later-stage experiment prompts, real Wasm signal demo and parallel-work demo.
 - [x] Responsive review and meaningful interaction checks.
 - [x] Rebuild standalone artifact before publishing.
+
+## September 21 — Story playback, technology scenes and compute detail
+
+- Replaced the chronology circles with a globe-and-pointer vector mark based on the user's reference. The rail still uses the exact linear year scale.
+- Added 16 verified portraits and original-source/date/credit links. The directory now includes 21 people after adding PWA contributors. Nicola Pellow, Ian Fette, David M. Kristol, Frances Berriman and Alex Russell have explicitly unverified-portrait placeholders. The RFC author is not the similarly named chemist; Alex Russell is not the actor.
+- Increased the graphics field from 34 × 34 to 72 × 72 points, while reducing individual dot radius and keeping offscreen rendering idle.
+- Wasm: checked the actual five-input sum 578 and average 115.6, and the three-input edge sum 309 and average 103.0. Window guides and input/output markers agree with the selected sample.
+- Parallel lab: both illustrations produced all 64 squares. Measured example runs were approximately 5.44 s and 680 ms including deliberate animation delays. The GPU mode shares the grid and reports unavailable support without fabricating results or elapsed time. Real GPU success still requires hardware unavailable in this browser.
+- Replaced the ambiguous ambient-motion toggle with Play/Pause/Resume story. Browser validation confirmed automatic CSS theme changes and progression to JavaScript, stationary scrolling while paused, successful resume, and immediate pause on manual wheel input. Tour-generated clicks do not trigger manual takeover.
+- The opening artwork now has three separately transformed SVG image planes. At an observed scroll progress of 0.6083, all three had different translation/rotation matrices; the original assembled artwork remains intact at the top.
+- All 12 bridges now contain specific technology miniatures with scroll-controlled states and independent manual controls. The old large drifting-word transitions are removed from the rendered tree.
+- PWA: added the 2015 naming/adoption milestone, Frances Berriman/Alex Russell credits, three additional authoritative references, and a local installation/standalone-window preview. Installation does not implicitly cache content or install this site.
+- Production export deduplicates the four uses of the opening image through one code literal; the self-contained HTML remains approximately 3.5 MB and includes all 16 portraits.
+- Final 390px/768px checks confirmed the responsive scene switches between narrow and wide states, the header player fits, the inset dialogs retain their controls, and the tablet Wasm recipe displays 578 → 115.6. Evidence: `web-history-latest-responsive.jpg` and `web-history-latest-transitions.jpg`.

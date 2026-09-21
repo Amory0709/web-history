@@ -2,23 +2,24 @@
 
 **[Open the live experience](https://amory0709.github.io/web-history/)**
 
-A scroll-driven, interactive history of the Web: **13 chapters, 19 milestones, hands-on demonstrations, and 32 authoritative references**. Follow the ideas and people who turned linked documents into an application platform.
+A scroll-driven, interactive history of the Web: **13 chapters, 20 milestones, hands-on demonstrations, and 35 authoritative references**. Follow the ideas and people who turned linked documents into an application platform.
 
 The experience is written in English and uses SLB Sans, a white-and-cobalt editorial layout, floating-document artwork, and a clickable chronological timeline.
 
 ## Experience
 
 - Scroll through the story or jump using the frameless vertical timeline on the left. Positions follow a linear 1989–2023 calendar scale: a seven-year gap is seven times a one-year gap. Date ranges anchor at their first year; the current caption shows the full range.
-- Move through 12 reversible, scroll-driven transitions: passing years, drifting technical notation, large background typography, and layered entrances. Wheel and touch scrolling remain native.
+- Move through 12 interactive transitions whose visuals introduce the next capability: linked documents, request/response, CSS styling, a JavaScript counter, a DOM tree, partial AJAX updates, an I/O queue, responsive reflow, a spatial canvas, an installable/offline app, Wasm and GPU work. Scroll or use each miniature’s control. Wheel and touch scrolling remain native.
+- Watch the three opening papers fly away independently as you scroll, and return when you scroll back.
 - Explore the CERN diagram: keep the same computers and files in place, weave a spiderweb of document links, and follow a cross-system connection. A small minimalist spider appears beside the web; faint silk is a visual metaphor, not additional infrastructure.
-- Open **People** for 19 contributor profiles and photograph-search links; names in the narrative also link to their profiles.
+- Open **People** for 21 contributor profiles and 16 verified portraits, with dates and source/credit links. Earlier photographs are preferred where available; Nicola Pellow, Ian Fette, David M. Kristol and the newly added PWA contributors Frances Berriman and Alex Russell retain explicit missing-portrait placeholders. Names in the narrative also link to their profiles.
 - Open **Timeline** to see when technologies were proposed, implemented, or standardized.
 - Open **Sources** or **The story & sources** for historical context, contributor credits, and original references.
 - Follow one page through HTML, CGI/cookies, CSS, JavaScript, DOM and AJAX. Your title, chosen style, reading list, likes and unfinished draft carry forward during your visit. Each stage ends with the next question to solve.
 - Open **Read the address** in the HTML chapter to explore scheme, hostname, port, path, query, fragment, and origin. Edit the example or compare default ports; parsing stays local.
-- Smooth a noisy signal using a real WebAssembly addition module. Compare serial and grouped work in the parallel-compute illustration, then optionally run and verify a 64-value WebGPU calculation.
+- Smooth a noisy signal using a real WebAssembly addition module. Move a highlighted sampling window to see its input values, Wasm sum and JavaScript average. Compare one-at-a-time and eight-together illustrations, then choose **On your GPU** beside them to run a real 64-value calculation in the same grid. Timers retain each completed run and distinguish animation time from end-to-end GPU time.
 - Read a continuous, content-height narrative with oversized years and concise historical context directly under each title. Glass dialogs have slim inset scrollbars and a close control that stays visible. There are no page counters or scroll snapping.
-- Pause motion using the header control. The layout adapts to smaller screens and respects reduced-motion preferences.
+- Use **Play story / Pause story** to automatically scroll through the narrative and run the local demonstrations. Resume continues the remaining pause; wheel, touch, a manual interaction, keyboard navigation, or hiding the tab pauses the tour. If you move elsewhere, playback starts from that point. The tour never follows external links or opens audio. Reduced-motion preferences are respected without a separate motion toggle.
 
 ## Run locally
 
@@ -63,7 +64,7 @@ The build creates the static client in `dist/client/` and the included Sites-com
 | 2008–09 | V8 and Node.js | Faster execution and a wider JavaScript ecosystem. |
 | 2010 | Responsive design | One document could adapt to different screens. |
 | 2011–14 | Web platform | Real-time connections, graphics and native media. |
-| Mid-2010s | Service workers | Deliberately cached resources could work offline. |
+| 2015 | Service workers & Progressive Web Apps | Deliberate caching and an installable, app-like web experience. |
 | 2017 | WebAssembly | More languages could target the browser. |
 | 2023 | WebGPU shipping milestone | Modern GPU graphics and compute on supported platforms. |
 
@@ -79,15 +80,16 @@ Dates represent different kinds of milestone; the site explains proposal, implem
 | `src/Demos.jsx` | Later platform demonstrations |
 | `src/ComputeLabs.jsx` | Signal smoothing with real Wasm and illustrative/real parallel computation |
 | `src/CernNetwork.jsx` | Fixed-node tree-to-network interaction |
-| `src/People.jsx` | Contributor links and profile/photograph directory |
+| `src/People.jsx`, `src/portraits.js` | Contributor links, portrait gallery and attribution data |
 | `src/editorial.css` | Continuous layout, glass surfaces and mobile adaptation |
 | `src/Chronology.jsx` | Linear calendar scale and frameless left navigation |
-| `src/ScrollStory.jsx` | Twelve scroll-driven transitions and chapter entrances |
+| `src/ScrollStory.jsx`, `src/EraScenes.jsx`, `src/era-scenes.css` | Scroll-driven paper flight, chapter entrances and twelve interactive technology scenes |
+| `src/StoryPlayback.jsx` | Guided scrolling, timed demonstration actions, pause/resume and manual takeover |
 | `src/motion.css` | Chronology, motion, responsive and reduced-motion styles |
 | `src/refinement.css` | Oversized dates, inset dialog scrolling and woven-web details |
 | `src/App.jsx` | Chapters, scroll navigation and source/detail dialogs |
 | `src/styles.css` | Typography, layout, responsive rules and motion |
-| `public/assets/` | Floating-document artwork |
+| `public/assets/` | Floating-document artwork and attributed portrait photographs |
 | `public/fonts/` | SLB Sans webfonts |
 | `worker/`, `scripts/`, `tests/` | Build packaging and worker checks |
 | `The-Web-A-Living-History.html` | Self-contained, ready-to-open snapshot |
@@ -98,7 +100,7 @@ Built with React, Vite, plain CSS, browser APIs, and Phosphor icons. To extend t
 
 HTML, CSS, JavaScript, DOM editing, responsive media queries, and the 41-byte WebAssembly module run in the browser. Audio uses the Web Audio API only after a button press.
 
-Cookies, AJAX request timing, asynchronous I/O, messaging, and offline caching are explicitly labelled local simulations. They do not create accounts, make payments, run a messaging server, or change your network connection. The graphics surface is a Canvas 2D projection so it also works without WebGL. The signal filter uses the Wasm module for window sums and JavaScript for looping, division and rendering. The separate 64-cell work-scheduling grid is an intentionally slowed illustration. The optional WebGPU calculation uses a real compute shader when browser, hardware, and context support it; otherwise it reports that no GPU computation occurred. The illustrations are not performance benchmarks.
+Cookies, AJAX request timing, asynchronous I/O, messaging, and offline caching are explicitly labelled local simulations. They do not create accounts, make payments, run a messaging server, or change your network connection. The PWA home-screen and standalone-window preview is also a local simulation, not an installation prompt or a registered service worker. The graphics surface contains 5,184 points (72 × 72), projected with Canvas 2D so it also works without WebGL. The signal filter uses the Wasm module for window sums and JavaScript for looping, division and rendering. The 64-cell work-scheduling grid is an intentionally slowed illustration. The optional WebGPU calculation uses a real compute shader when browser, hardware, and context support it; otherwise it reports that no GPU computation occurred. The illustrations deliberately wait 85 ms between updates; their wall-clock timers include that delay. The GPU timer includes adapter/device initialization, shader/pipeline preparation, transfer, execution and readback. These are different measurements, not performance benchmarks.
 
 ## Sources and assets
 
@@ -106,7 +108,8 @@ Historical references are attached to each chapter, including the W3C archives a
 
 - The floating papers are generated artwork: an artistic reconstruction, not a historical document facsimile.
 - SLB Sans Book, Light, Regular, and Medium are included from the public SLB website font endpoints to match the requested design. SLB Sans is a third-party typeface; its inclusion does not grant an open-source font license.
-- Icons come from `@phosphor-icons/react`.
+- Icons come from `@phosphor-icons/react`; the chronology uses an inline globe-and-pointer SVG inspired by the requested Web symbol.
+- Portrait sources, dates and individual rights are documented in [PORTRAITS.md](PORTRAITS.md). The photographs are not AI-generated or de-aged.
 
 ## Validation
 

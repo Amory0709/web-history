@@ -32,8 +32,18 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - Typography: normal, tight letter spacing for year/section labels (e.g. “1989 · The proposal”). Avoid widely tracked all-caps labels throughout the experience.
 
 - Timeline revision: use an unboxed, transparent Star Atlas-inspired vertical chronology. Marker positions must be linear in actual year, not equal chapter spacing; range chapters anchor to their first year and retain full date labels in accessible names and the current caption.
-- Use reversible, scroll-driven transitions between EVERY historical section: layered year typography, technical tokens and differential text/demo movement. Retain natural wheel/touch scrolling, readable content and reduced-motion/manual-pause fallback. No snapping or full-screen chapter pinning.
+- Use reversible, scroll-driven transitions between EVERY historical section: era-specific interactive miniature scenes and differential text/demo movement. Retain natural wheel/touch scrolling, readable content and reduced-motion fallback. No snapping or full-screen chapter pinning.
 
 - Give historical years a strong oversized presence in chapter headings and transitions. Move milestone/date context directly below each title as a concise introduction; remove duplicate bottom footnotes. Keep all historical qualifications.
 - Dialogs use a slim inset scrollbar inside the rounded glass shell, with a fixed visible close control.
 - The CERN Add the Web state should weave into a spiderweb-like network with a small, friendly minimalist spider beside it. Keep every computer/document node fixed and distinguish the illustrative silk from navigable cross-system links.
+
+- Timeline markers use a globe with a mouse pointer, matching the user’s September 21 icon reference; active cobalt, inactive muted gray. Preserve the true year spacing and frameless rail.
+- People should display authentic portraits, prioritizing clear earlier photographs; preserve source/credit links and known photo dates. Never substitute a namesake or generate a historical portrait.
+- Graphics uses a denser 72 × 72 point surface. Its explicit animation control remains independent of the global page-motion toggle.
+- Wasm smoothing must show a movable, shaded sampling window, input guides and the exact input → Wasm sum → JS average decomposition, including smaller edge windows.
+- Parallel illustrations and real GPU execution share one output grid; place the GPU mode immediately after Eight together. Retain measured run times and clearly distinguish intentionally slowed illustration time from GPU initialization/compute/readback time.
+- The user replaced the ambient Motion on/off control with Play story / Pause story: automatically scroll, allow reading pauses and run demo interactions. Pause cancels scrolling and upcoming actions immediately; resume preserves the current stop. Wheel, touch, keyboard navigation, manual interaction and tab hiding pause playback. Keep source links and audio manual.
+- The three opening paper planes fly apart independently with scrolling and return when scrolling reverses.
+- Replace generic oversized-word transitions with technology-specific interactive scenes; each should teach the next capability while the user scrolls.
+- The 2015 chapter includes service workers AND Progressive Web Apps, with the naming credited to Frances Berriman and Alex Russell. Explain manifests, deliberate caching, installation and their separate responsibilities. PWA is an application model, not one new API. The installation preview is simulated.
