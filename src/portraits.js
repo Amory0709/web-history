@@ -1,5 +1,9 @@
 // Verified archival photographs; original dates are retained when known.
 export const portraits = {
+"Miško Hevery": {"src": "/assets/portrait-misko-hevery.jpg", "source": "https://github.com/mhevery", "credit": "Miško Hevery · public GitHub profile photograph", "license": "See original source", "date": "Undated profile photograph"},
+"Jordan Walke": {"src": "/assets/portrait-jordan-walke.jpg", "source": "https://github.com/jordwalke", "credit": "Jordan Walke · public GitHub profile photograph", "license": "See original source", "date": "Undated profile photograph"},
+"Evan You": {"src": "/assets/portrait-evan-you.jpg", "source": "https://github.com/yyx990803", "credit": "Evan You · public GitHub profile photograph", "license": "See original source", "date": "Undated profile photograph"},
+"Adam Abrons": {"src": "/assets/portrait-adam-abrons.jpg", "source": "https://github.com/abrons", "credit": "Adam Abrons · public GitHub profile photograph", "license": "See original source", "date": "Undated profile photograph"},
   "Tim Berners-Lee": {
     "src": "/assets/portrait-tim-berners-lee.jpg",
     "source": "https://commons.wikimedia.org/wiki/File:Tim_Berners-Lee.jpg",

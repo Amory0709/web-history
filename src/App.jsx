@@ -14,7 +14,8 @@ function Dialog({open,onClose,children,className='',label='A closer look'}){cons
 const onward = {
  v8:['Apps can serve more people. Can the same page fit their different screens?','Change the viewport','responsive'],
  responsive:['A page fits in your pocket. What else could the browser let it do?','Explore the platform','platform'],
- platform:['The browser has become a creative space. What happens when the connection disappears?','Leave the network','offline'],
+ platform:['The browser can do so much more. How do we keep a growing application understandable?','Build with components','frameworks'],
+ frameworks:['The parts of the app work together. Can the experience stay when the connection disappears?','Leave the network','offline'],
  offline:['An app can survive offline. Could an existing scientific tool run here too?','Bring a program to the Web','wasm'],
  wasm:['Portable code brings more algorithms. How do we handle lots of independent work?','Think in parallel','webgpu'],
  webgpu:['From one document to a computational canvas. What would you build on these foundations?','Explore all the milestones','timeline']

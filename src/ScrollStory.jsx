@@ -10,6 +10,7 @@ export const transitions={
  v8:['Small scripts find a bigger stage.','From the page to the server.','JavaScript → native code'],
  responsive:['The screen changes shape.','The idea still belongs everywhere.','@media (…)'],
  platform:['The browser opens its doors.','A canvas. A conversation. A sound.','<canvas>'],
+ frameworks:['A growing app needs a way to belong together.','Small components. One shared state.','UI = f(state)'],
  offline:['A connection is no longer a condition.','Save the moment. Return to it.','network → cache'],
  wasm:['Another language joins the conversation.','Bring an algorithm. Keep the Web.','00 61 73 6d'],
  webgpu:['One operation becomes many.','A wider canvas for computation.','@compute']

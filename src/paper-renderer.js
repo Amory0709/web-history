@@ -35,13 +35,15 @@ function point(pose,u,v){
  const p=rotate([x,y,z],rotation);return p.map((a,i)=>a+center[i]);
 }
 const sheets=[
- {kind:'left',w:1.19,h:1.88,center:[-1.65,.96,-.52],rotation:[-.07,.35,-.13],bend:.3,twist:.08,sway:.19,delay:0,drift:[-.53,1.65,.65],turn:[-.3,-.37,-.2]},
- {kind:'main',w:2.36,h:3.34,center:[.02,-.15,.3],rotation:[-.09,-.34,.08],bend:.48,twist:-.08,sway:-.48,delay:.09,drift:[.24,2.05,.8],turn:[-.32,.46,.18]},
- {kind:'right',w:1.23,h:1.96,center:[1.65,-.91,-.3],rotation:[-.04,-.3,.025],bend:.38,twist:.07,sway:-.29,delay:.18,drift:[.58,1.67,.3],turn:[-.4,-.36,.22]}
+ {kind:'left',w:1.19,h:1.88,center:[-1.65,.96,-.52],rotation:[-.07,.35,-.13],bend:.3,twist:.08,sway:.19,delay:0,drift:[-1.05,-1.45,-.3],turn:[.2,-.32,.34],phase:0},
+ {kind:'main',w:2.36,h:3.34,center:[.02,-.15,.3],rotation:[-.09,-.34,.08],bend:.48,twist:-.08,sway:-.48,delay:.08,drift:[.16,-1.8,-.4],turn:[.28,.24,-.2],phase:1.4},
+ {kind:'right',w:1.23,h:1.96,center:[1.65,-.91,-.3],rotation:[-.04,-.3,.025],bend:.38,twist:.07,sway:-.29,delay:.16,drift:[.95,-1.6,-.25],turn:[.22,-.3,-.34],phase:2.8}
 ];
 function poseFor(sheet,progress){
  const p=ease((progress-sheet.delay)/(1-sheet.delay));const flex=Math.sin(p*Math.PI);
- return {...sheet,progress:p,center:sheet.center.map((a,i)=>a+sheet.drift[i]*p),rotation:sheet.rotation.map((a,i)=>a+sheet.turn[i]*p),bend:sheet.bend+flex*.38,twist:sheet.twist+flex*.18};
+ // Broad, offset sways suggest air resistance; all motion is reversible with scroll.
+ const flutter=Math.sin(p*Math.PI*2+sheet.phase)*flex;
+ return {...sheet,progress:p,opacity:1-ease((p-.5)/.44),center:sheet.center.map((a,i)=>a+sheet.drift[i]*p+(i===0?flutter*.14:0)),rotation:sheet.rotation.map((a,i)=>a+sheet.turn[i]*p+flutter*(i===2?.14:.08)),bend:sheet.bend+flex*.36,twist:sheet.twist+flutter*.24,sway:sheet.sway+flutter*.12};
 }
 // Project the same curved geometry with Canvas 2D. This also works when a browser
 // disables WebGL. Rendering happens only on scroll/resize, not on an idle loop.
@@ -58,7 +60,7 @@ export function createPaperScene(canvas){
   const focal=h/(2*Math.tan(38*Math.PI/360)),project=([x,y,z])=>[w/2+x*focal/(9.7-z),h/2-y*focal/(9.7-z)];
   const poses=sheets.map(s=>poseFor(s,progress));
   function outline(p){const points=[];for(let i=0;i<=20;i++)points.push(project(point(p,i/20,0)));for(let i=1;i<=20;i++)points.push(project(point(p,1,i/20)));for(let i=19;i>=0;i--)points.push(project(point(p,i/20,1)));for(let i=19;i>0;i--)points.push(project(point(p,0,i/20)));ctx.beginPath();points.forEach((v,i)=>i?ctx.lineTo(...v):ctx.moveTo(...v));ctx.closePath()}
-  for(const p of poses){ctx.save();ctx.globalAlpha=.075*(1-p.progress*.9);const pos=project([p.center[0]+.1,p.center[1]-.2,-.7]),width=p.w*focal/10.4*1.5,height=p.h*focal/10.4*1.4;ctx.translate(...pos);ctx.rotate(-p.rotation[2]);ctx.drawImage(shadow,-width/2,-height/2,width,height);ctx.restore()}
+  for(const p of poses){ctx.save();ctx.globalAlpha=.075*p.opacity*(1-p.progress*.7);const pos=project([p.center[0]+.1,p.center[1]-.2,-.7]),width=p.w*focal/10.4*1.5,height=p.h*focal/10.4*1.4;ctx.translate(...pos);ctx.rotate(-p.rotation[2]);ctx.drawImage(shadow,-width/2,-height/2,width,height);ctx.restore()}
   function triangle(image,src,dst){
    const [a,b,c]=src,[p,q,r]=dst,det=a[0]*(b[1]-c[1])+b[0]*(c[1]-a[1])+c[0]*(a[1]-b[1]);
    const coeff=i=>[(p[i]*(b[1]-c[1])+q[i]*(c[1]-a[1])+r[i]*(a[1]-b[1]))/det,(p[i]*(c[0]-b[0])+q[i]*(a[0]-c[0])+r[i]*(b[0]-a[0]))/det,(p[i]*(b[0]*c[1]-c[0]*b[1])+q[i]*(c[0]*a[1]-a[0]*c[1])+r[i]*(a[0]*b[1]-b[0]*a[1]))/det];
@@ -67,11 +69,11 @@ export function createPaperScene(canvas){
   }
   for(const index of [0,2,1]){
    const p=poses[index],image=textures[index],nx=8,ny=18,grid=[];
-   ctx.save();ctx.globalAlpha=1-ease((p.progress-.82)/.18);outline(p);ctx.clip();
+   ctx.save();ctx.globalAlpha=p.opacity;outline(p);ctx.clip();
    for(let y=0;y<=ny;y++)for(let x=0;x<=nx;x++)grid.push({src:[x/nx*image.width,y/ny*image.height],dst:project(point(p,x/nx,y/ny))});
    for(let y=0;y<ny;y++)for(let x=0;x<nx;x++){const a=y*(nx+1)+x,b=a+1,c=a+nx+1,d=c+1;for(const ids of [[a,b,c],[b,d,c]])triangle(image,ids.map(i=>grid[i].src),ids.map(i=>grid[i].dst))}
    const top=project(point(p,0,0)),bottom=project(point(p,1,1)),shade=ctx.createLinearGradient(...top,...bottom);shade.addColorStop(0,'#ffffff00');shade.addColorStop(.6,'#aaa79c05');shade.addColorStop(1,`rgba(81,84,99,${.06+Math.sin(p.progress*Math.PI)*.08})`);outline(p);ctx.fillStyle=shade;ctx.fill();ctx.restore();
-   ctx.save();ctx.globalAlpha=(1-ease((p.progress-.82)/.18))*.36;outline(p);ctx.strokeStyle='#babfc9';ctx.lineWidth=.6;ctx.stroke();ctx.restore();
+   ctx.save();ctx.globalAlpha=p.opacity*.36;outline(p);ctx.strokeStyle='#babfc9';ctx.lineWidth=.6;ctx.stroke();ctx.restore();
   }
   const alpha=1-ease(progress/.24);
   if(alpha>0){ctx.save();ctx.globalAlpha=alpha;ctx.strokeStyle='#5479f2';ctx.lineWidth=1.1;
