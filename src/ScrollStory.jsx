@@ -56,6 +56,8 @@ export function useScrollStory(motion,onActive){
     // Wait for the illustration itself to enter the reading area. The passage
     // includes its heading and spacing, so its top was starting scenes too early.
     const {art,anchor}=sceneArtwork.get(passage);
+    const sceneWidth=passage.dataset.transition==='frameworks'?360:320;
+    passage.style.setProperty('--scene-fit',Math.min(.96,Math.max(.5,(art.clientWidth-4)/sceneWidth)).toFixed(4));
     const artHeight=art.getBoundingClientRect().height;
     const start=Math.min(headerBottom+readingHeight*.73,vh-Math.min(artHeight/2,readingHeight*.45)-24);
     const carry=Math.min(104,readingHeight*.12);

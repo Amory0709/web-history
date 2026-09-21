@@ -1,0 +1,43 @@
+/* Reflow the teaching examples into the reading space beside the mobile rail. */
+.signal-selection{display:none}
+@media(max-width:580px){
+ .demo-topline{align-items:flex-start;gap:4px 12px;line-height:1.6}
+ .demo input:not([type=checkbox]):not([type=range]),.url-input input{font-size:16px}
+ .demo-tabs button,.scene-action,.url-invitation{min-height:44px}
+ .small-button,.story-link,.demo-actions .pill-primary{min-height:40px}
+ .site-header nav button{min-height:40px}
+ .story-dialog .dialog-close{width:44px;height:44px;top:14px;right:14px}
+ .chronology-caption strong{width:64px;max-width:none;overflow-wrap:normal}
+ .framework-app-body{grid-template-columns:minmax(0,1fr);gap:16px;padding:16px}
+ .framework-article{padding:14px 6px}
+ .framework-article p{max-width:none;font-size:12px}
+ .framework-save{min-height:40px;font-size:12px}
+ .framework-reading{padding:20px 16px}
+ .framework-list-state{min-height:92px}
+ .framework-list-state p{font-size:16px}
+ .framework-profile{min-height:0}
+ .signal-selection{display:block;font-size:11px;color:#526995;margin:8px 0 12px;line-height:1.5}
+ .signal-chart text{display:none}
+ .window-recipe{display:grid;grid-template-columns:minmax(0,1fr);gap:9px;padding:15px}
+ .window-recipe>div{display:flex;align-items:center;justify-content:space-between;gap:12px}
+ .window-recipe>div:first-child{display:block}
+ .window-recipe small{font-size:11px;margin:0;line-height:1.5}
+ .window-recipe span{display:block;font-size:12px;line-height:1.7;margin-top:6px}
+ .window-recipe strong{font-size:23px}
+ .window-recipe>svg{width:16px;height:16px;transform:rotate(90deg)}
+ .compute-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+ .compute-tabs button{min-width:0;text-align:left;line-height:1.4}
+ .compute-timer{flex-wrap:wrap;gap:6px 12px}
+ .compute-timer output{margin-left:auto}
+ .compute-records{grid-template-columns:minmax(0,1fr);gap:0}
+ .compute-records>div{display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:5px 12px;padding:13px 0}
+ .compute-records span{font-size:12px}
+ .compute-records strong{font-size:22px;grid-column:2;grid-row:1 / 3;align-self:center}
+ .compute-records small{font-size:10px;grid-column:1}
+}
+@media(max-width:480px){
+ /* Browser specimens have a 310px width and an !important auto margin.
+    Center their real width rather than inheriting the generic 320px offset. */
+ .chapter-prologue .era-scene-art>div{transform:scale(var(--scene-fit,.82));margin-left:-160px!important;margin-right:0!important}
+ .chapter-prologue .era-scene-art>.era-browser{margin-left:-155px!important}
+}
