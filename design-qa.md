@@ -1,4 +1,33 @@
-# Design QA — Calendar and scroll motion revision
+# Design QA — Large dates, quiet scrollbars and a woven Web
+
+final result: passed
+
+Reviewed 21 September 2026 against the user's current three refinements and attached People-dialog screenshot, plus the requested spiderweb illustration. This is a scoped update to the established SLB Sans / white-and-cobalt design.
+
+## Visual evidence
+
+- `design-refined-hero.jpg`: desktop opening, with a 177px light-weight 1989 and the original floating-paper artwork. Chapter years and transition years also have a stronger hierarchy. Timeline markers retain true-year positions; their labels and current caption are larger.
+- `design-refined-dialog.jpg`: the People directory with a thin, translucent scrollbar inset from the rounded glass shell. The close control remains in the same corner while content scrolls.
+- `design-refined-mobile.jpg`: real browser frames at 390 × 844 and 768 × 844. The 1993–94 range fits on one line; historical context sits directly under the chapter title. Mobile People-dialog proportions were separately inspected.
+- `design-refined-web.jpg`: the same fixed computers and documents connected by curved strands, with a small hanging eight-legged spider. The faint intermediate silk is explicitly an illustration, not another infrastructure layer.
+
+## Checks and fixes
+
+- All 13 chapters have prominent years and one milestone introduction directly below their title. Removed the 12 duplicated bottom date footnotes. Historical qualifications remain unchanged.
+- Fixed a narrow-screen year-range wrap found in the first visual pass by scaling range typography separately and keeping it on one line.
+- People dialog: scrolling content moved 598px while the close button remained at y=92.52px. The outer shell hides overflow; the inner scroll area reports `scrollbar-width: thin`. Header, directory and close control fit on the 390px frame.
+- URL explorer opens in the same inset scroll shell, retains all six address-part controls, and closes correctly. The existing native dialog supplies focus containment and Escape behavior.
+- Before/after comparison confirms all 28 CERN node transforms are identical. The connected state draws 34 document-link paths plus 16 decorative silk segments. Following a cross-system link reaches UNIX from the initial VAX/VMS document and reports success.
+- All added weaving/appearance transitions honor the existing motion-off switch and OS reduced-motion rules.
+- Production build and all four existing worker/packaging checks pass. Standalone HTML is regenerated from the final source. Inspected browser error entries were extension metadata messages, not application errors.
+
+## Remaining limits
+
+Responsive checks use real browser frames rather than physical devices. Native scrollbar rendering varies across operating systems; a usable native thin scrollbar remains available where WebKit styling is ignored.
+
+---
+
+# Previous review — Calendar and scroll motion revision
 
 final result: passed
 

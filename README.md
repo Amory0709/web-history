@@ -10,14 +10,14 @@ The experience is written in English and uses SLB Sans, a white-and-cobalt edito
 
 - Scroll through the story or jump using the frameless vertical timeline on the left. Positions follow a linear 1989–2023 calendar scale: a seven-year gap is seven times a one-year gap. Date ranges anchor at their first year; the current caption shows the full range.
 - Move through 12 reversible, scroll-driven transitions: passing years, drifting technical notation, large background typography, and layered entrances. Wheel and touch scrolling remain native.
-- Explore the CERN diagram: keep the same computers and files in place, add cross-system hyperlinks, and follow a connection.
+- Explore the CERN diagram: keep the same computers and files in place, weave a spiderweb of document links, and follow a cross-system connection. A small minimalist spider appears beside the web; faint silk is a visual metaphor, not additional infrastructure.
 - Open **People** for 19 contributor profiles and photograph-search links; names in the narrative also link to their profiles.
 - Open **Timeline** to see when technologies were proposed, implemented, or standardized.
 - Open **Sources** or **The story & sources** for historical context, contributor credits, and original references.
 - Follow one page through HTML, CGI/cookies, CSS, JavaScript, DOM and AJAX. Your title, chosen style, reading list, likes and unfinished draft carry forward during your visit. Each stage ends with the next question to solve.
 - Open **Read the address** in the HTML chapter to explore scheme, hostname, port, path, query, fragment, and origin. Edit the example or compare default ports; parsing stays local.
 - Smooth a noisy signal using a real WebAssembly addition module. Compare serial and grouped work in the parallel-compute illustration, then optionally run and verify a 64-value WebGPU calculation.
-- Read a continuous, content-height narrative with frosted navigation and panels, no page counters, and no scroll snapping.
+- Read a continuous, content-height narrative with oversized years and concise historical context directly under each title. Glass dialogs have slim inset scrollbars and a close control that stays visible. There are no page counters or scroll snapping.
 - Pause motion using the header control. The layout adapts to smaller screens and respects reduced-motion preferences.
 
 ## Run locally
@@ -84,6 +84,7 @@ Dates represent different kinds of milestone; the site explains proposal, implem
 | `src/Chronology.jsx` | Linear calendar scale and frameless left navigation |
 | `src/ScrollStory.jsx` | Twelve scroll-driven transitions and chapter entrances |
 | `src/motion.css` | Chronology, motion, responsive and reduced-motion styles |
+| `src/refinement.css` | Oversized dates, inset dialog scrolling and woven-web details |
 | `src/App.jsx` | Chapters, scroll navigation and source/detail dialogs |
 | `src/styles.css` | Typography, layout, responsive rules and motion |
 | `public/assets/` | Floating-document artwork |

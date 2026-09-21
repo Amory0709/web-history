@@ -33,3 +33,7 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 
 - Timeline revision: use an unboxed, transparent Star Atlas-inspired vertical chronology. Marker positions must be linear in actual year, not equal chapter spacing; range chapters anchor to their first year and retain full date labels in accessible names and the current caption.
 - Use reversible, scroll-driven transitions between EVERY historical section: layered year typography, technical tokens and differential text/demo movement. Retain natural wheel/touch scrolling, readable content and reduced-motion/manual-pause fallback. No snapping or full-screen chapter pinning.
+
+- Give historical years a strong oversized presence in chapter headings and transitions. Move milestone/date context directly below each title as a concise introduction; remove duplicate bottom footnotes. Keep all historical qualifications.
+- Dialogs use a slim inset scrollbar inside the rounded glass shell, with a fixed visible close control.
+- The CERN Add the Web state should weave into a spiderweb-like network with a small, friendly minimalist spider beside it. Keep every computer/document node fixed and distinguish the illustrative silk from navigable cross-system links.
