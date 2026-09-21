@@ -1,6 +1,6 @@
 # The Web — A Living History
 
-A scroll-driven, interactive history of the Web: **13 chapters, 19 milestones, 12 hands-on demonstrations, and 28 authoritative references**. Follow the ideas and people who turned linked documents into an application platform.
+A scroll-driven, interactive history of the Web: **13 chapters, 19 milestones, 12 hands-on demonstrations, and 32 authoritative references**. Follow the ideas and people who turned linked documents into an application platform.
 
 The experience is written in English and uses SLB Sans, a white-and-cobalt editorial layout, floating-document artwork, and a clickable chronological timeline.
 
@@ -9,7 +9,9 @@ The experience is written in English and uses SLB Sans, a white-and-cobalt edito
 - Scroll through the story or jump between chapters using the bottom timeline.
 - Open **Timeline** to see when technologies were proposed, implemented, or standardized.
 - Open **Sources** or **The story & sources** for historical context, contributor credits, and original references.
-- Try editing HTML, switching CSS styles, running JavaScript, changing DOM nodes, comparing AJAX updates, and executing a real WebAssembly module.
+- Follow one page through HTML, CGI/cookies, CSS, JavaScript, DOM and AJAX. Your title, chosen style, reading list, likes and unfinished draft carry forward during your visit. Each stage ends with the next question to solve.
+- Open **Read the address** in the HTML chapter to explore scheme, hostname, port, path, query, fragment, and origin. Edit the example or compare default ports; parsing stays local.
+- Try a real WebAssembly module and explore the later platform breakthroughs.
 - Pause ambient motion using the header control. The layout adapts to smaller screens and respects reduced-motion preferences.
 
 ## Run locally
@@ -29,7 +31,7 @@ Open the local address printed by Vite.
 
 Download the repository, then open **`The-Web-A-Living-History.html`** in a modern browser. This self-contained snapshot embeds the scripts, styles, fonts, and artwork. The main experience works without network access; external source links require an Internet connection.
 
-The standalone HTML is a snapshot of this version. Changes to the React source need a new build and standalone export to appear in that file.
+`npm run build` automatically regenerates the standalone HTML from the current React source and embeds the fonts and artwork. Rebuild after editing; commit the regenerated HTML alongside the source.
 
 ### Build and validate
 
@@ -66,7 +68,9 @@ Dates represent different kinds of milestone; the site explains proposal, implem
 | Path | Purpose |
 | --- | --- |
 | `src/history.js` | Narrative, dates, contributors, citations and timeline entries |
-| `src/Demos.jsx` | Interactive demonstrations |
+| `src/UrlAnatomy.jsx` | Interactive URL anatomy and origin explorer |
+| `src/Journey.jsx` | Shared teaching page, state and six connected chapters |
+| `src/Demos.jsx` | Later platform demonstrations |
 | `src/App.jsx` | Chapters, scroll navigation and source/detail dialogs |
 | `src/styles.css` | Typography, layout, responsive rules and motion |
 | `public/assets/` | Floating-document artwork |
@@ -74,7 +78,7 @@ Dates represent different kinds of milestone; the site explains proposal, implem
 | `worker/`, `scripts/`, `tests/` | Build packaging and worker checks |
 | `The-Web-A-Living-History.html` | Self-contained, ready-to-open snapshot |
 
-Built with React, Vite, plain CSS, browser APIs, and Phosphor icons. To extend the story, edit `src/history.js`; add demonstrations in `src/Demos.jsx` and connect them through its exported map.
+Built with React, Vite, plain CSS, browser APIs, and Phosphor icons. To extend the story, edit `src/history.js`; edit the continuous teaching page in `src/Journey.jsx`, or add later demonstrations in `src/Demos.jsx` and connect them through its exported map.
 
 ## What the demonstrations actually do
 

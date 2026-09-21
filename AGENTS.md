@@ -19,3 +19,6 @@ When implementing from a selected generated mock, treat that image as the source
 Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts/prepare-sites-build.mjs`, and `tests/sites-worker.test.mjs` intact so the same local prototype can be handed to Sites. Before a Sites handoff, run `npm run build` and `npm run test:sites`; the build must leave `dist/client/index.html`, `dist/server/index.js`, and `dist/.openai/hosting.json`.
 
 - GitHub repository: `Amory0709/web-history`, public, explicitly requested by the user. Keep README in English and update it when functionality or run instructions change.
+
+- Narrative iteration: the first six technical chapters share one teaching page and session-local state. Preserve its title, style, reading list, likes and draft between stages; identify simulations. Every stage poses a next question. `npm run build` must regenerate the standalone HTML automatically.
+- Include interactive URL anatomy in the HTML chapter: scheme, hostname/host, port, path, query, fragment, and HTTP(S) origin, with authoritative sources.
