@@ -28,6 +28,7 @@ jobs:
         run: |
           mkdir -p _site
           cp The-Web-A-Living-History.html _site/index.html
+          cp dist/client/robots.txt dist/client/sitemap.xml dist/client/social-card.jpg _site/
           touch _site/.nojekyll
       - uses: actions/upload-pages-artifact@v4
         with:
