@@ -26,11 +26,14 @@ export function useScrollStory(motion,onActive){
   let frame=0;const root=document.documentElement;
   const chapters=[...document.querySelectorAll('.chapter')];
   const passages=[...document.querySelectorAll('.epoch-transition')];
+  const sceneArtwork=new Map(passages.map(p=>[p,p.querySelector('.era-scene-art')]));
   const visible=new Set();
   const observer=new IntersectionObserver(entries=>{for(const entry of entries){if(entry.isIntersecting)visible.add(entry.target);else visible.delete(entry.target)}schedule()},{rootMargin:'160px 0px'});
   passages.forEach(p=>observer.observe(p));
   function render(){
    frame=0;const vh=window.innerHeight;let current=0;
+   const headerBottom=document.querySelector('.site-header').getBoundingClientRect().bottom;
+   const readingHeight=Math.max(1,vh-headerBottom);
    chapters.forEach((section,i)=>{
     const bounds=section.getBoundingClientRect();
     if(bounds.top<=vh*.42)current=i;
@@ -50,7 +53,13 @@ export function useScrollStory(motion,onActive){
     const rect=passage.getBoundingClientRect();
     const p=clamp((vh*.92-rect.top)/(vh*.92+rect.height*.52));
     const bloom=Math.sin(p*Math.PI);
-    passage.style.setProperty('--scene-progress',motion?clamp((p-.18)/.58).toFixed(4):'1');
+    // Wait for the illustration itself to enter the reading area. The passage
+    // includes its heading and spacing, so its top was starting scenes too early.
+    const art=sceneArtwork.get(passage).getBoundingClientRect();
+    const start=Math.min(headerBottom+readingHeight*.73,vh-Math.min(art.height/2,readingHeight*.45)-24);
+    const distance=Math.max(180,Math.min(340,readingHeight*.38));
+    const sceneProgress=smooth(clamp((start-(art.top+art.height/2))/distance));
+    passage.style.setProperty('--scene-progress',motion?sceneProgress.toFixed(4):'1');
     passage.style.setProperty('--passage',p.toFixed(4));
     passage.style.setProperty('--bloom',bloom.toFixed(4));
     passage.style.setProperty('--token-x',`${(motion?(p-.5)*-170:0).toFixed(2)}px`);
