@@ -17,3 +17,28 @@ html[data-motion=off] .chapter-copy,html[data-motion=off] .chapter-sticky>.demo,
 
 html[data-motion=off] .epoch-word,html[data-motion=off] .epoch-token{opacity:.2}html[data-motion=off] .epoch-rule,html[data-motion=off] .epoch-thread{transform:none;opacity:1}
 @media(prefers-reduced-motion:reduce){.epoch-word,.epoch-token{opacity:.2!important}.epoch-rule,.epoch-thread{transform:none!important;opacity:1!important}}
+
+
+/* Smaller, dated infrastructure milestones preserve the original chapter structure. */
+.foundation-timeline-point{position:absolute;left:-10px;width:13px;height:17px;display:grid;place-items:center;transform:translateY(-50%);z-index:4;padding:0;border:0;background:none;color:#8996af;cursor:pointer}
+.foundation-dot{width:6px;height:6px;border:1.5px solid currentColor;background:#f8f9fc;transform:rotate(45deg);transition:background .2s,transform .2s}
+.foundation-timeline-point:hover,.foundation-timeline-point:focus-visible,.foundation-timeline-point.selected{color:#0014dc}
+.foundation-timeline-point:hover .foundation-dot,.foundation-timeline-point.selected .foundation-dot{background:#0014dc;transform:rotate(45deg) scale(1.3)}
+.foundation-timeline-point:focus-visible{outline:1px solid #0014dc;outline-offset:3px}
+.foundation-timeline-detail{position:fixed;top:clamp(130px,35vh,390px);left:190px;z-index:35;width:min(350px,calc(100vw - 210px));max-height:65svh;overflow-y:auto;padding:24px 24px 20px;background:#ffffffef;backdrop-filter:blur(24px);border:1px solid #e1e6f3;border-radius:15px;box-shadow:0 16px 55px #1e345020}
+.foundation-timeline-detail small{display:block;font-size:10px;letter-spacing:.6px;color:#0014dc}
+.foundation-timeline-detail h3{font-size:25px;line-height:1.18;letter-spacing:-.6px;font-weight:400;margin:10px 24px 15px 0}
+.foundation-timeline-detail p{font-size:13px;line-height:1.75;color:#526079;margin:0 0 18px}
+.foundation-timeline-detail>a{display:block;color:#0014dc;font-size:12px;text-decoration:underline;text-underline-offset:3px;margin-bottom:15px}
+.foundation-timeline-detail>button:not(.foundation-close){font-size:12px;color:#0014dc;border:0;padding:5px 0;background:transparent}
+.foundation-timeline-detail .foundation-close{position:absolute;right:12px;top:10px;border:0;background:transparent;font-size:24px;color:#596782;line-height:1}
+.foundation-milestone-source{color:var(--blue);text-decoration:underline;text-underline-offset:2px}
+.foundation-milestone-note{display:block;color:#718099;margin-top:8px}
+@media(max-width:1100px){.foundation-timeline-detail{left:135px}}
+@media(max-width:700px){
+ .foundation-timeline-point{left:-8px;width:12px}
+ .foundation-timeline-detail{left:65px;top:clamp(105px,28vh,240px);width:calc(100vw - 78px);max-height:68svh;padding:18px}
+ .foundation-timeline-detail h3{font-size:21px}
+ .foundation-timeline-detail p{font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){.foundation-dot{transition:none}}
