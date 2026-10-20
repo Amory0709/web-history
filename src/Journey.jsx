@@ -1,5 +1,6 @@
 import React, {createContext, useContext, useEffect, useRef, useState} from 'react';
 import {UrlAnatomy} from './UrlAnatomy';
+import {BrowserJourney} from './BrowserJourney';
 import {ArrowRight, ArrowClockwise, Plus, Code} from '@phosphor-icons/react';
 
 const Context = createContext(null);
@@ -87,7 +88,7 @@ export function JourneyDemo({stage,onNext}) {
       {code&&<pre className="code-block"><code>{code}</code></pre>}
     </div>
     {stage==='html'&&<div className="journey-controls"><label className="input-row"><span>Name your page</span><input value={page.title} maxLength={40} onChange={e=>{update({title:e.target.value});setFollowed(false)}}/></label><button className="story-link" onClick={()=>{reset();setFollowed(false)}}>Reset your page <ArrowClockwise size={14}/></button></div>}
-    {stage==='html'&&<UrlAnatomy/>}
+    {stage==='html'&&<><UrlAnatomy/><BrowserJourney/></>}
     {stage==='server'&&<div className="journey-controls"><div className="demo-actions"><label className="check-control"><input type="checkbox" checked={remember} onChange={e=>setRemember(e.target.checked)}/>Keep a session cookie</label><button className="small-button" onClick={revisit}>Return to this page</button></div><p className="journey-status" role="status">{status||'Save an idea, then return with or without a session identifier.'}</p></div>}
     {stage==='javascript'&&<label className="check-control bottom-control"><input type="checkbox" checked={enabled} onChange={e=>setEnabled(e.target.checked)}/>Enable the click behavior</label>}
     {stage==='dom'&&<div className="journey-controls"><label className="input-row"><span>Edit {selected==='h1'?'heading':'paragraph'}</span><input aria-label="Selected node text" disabled={selected==='p.note'} value={selected==='p.note'?'A new thought, added without a new page.':selected==='h1'?page.title:page.paragraph} maxLength={selected==='h1'?40:90} onChange={e=>update({[selected==='h1'?'title':'paragraph']:e.target.value})}/></label><button className="story-link" onClick={()=>{update({note:!page.note});setSelected(page.note?'h1':'p.note')}}>{page.note?'Remove the new paragraph':'Add a paragraph'} <Plus size={15}/></button></div>}
